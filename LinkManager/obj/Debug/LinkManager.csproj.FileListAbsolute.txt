@@ -10,3 +10,9 @@ D:\Программирование\Visual Studio Solutions\Revit\LinkManager\Li
 D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.CoreCompileInputs.cache
 D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\obj\Debug\LinkManager.dll
 D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\obj\Debug\LinkManager.pdb
+D:\Практика C#\LinkManager\LinkManager\bin\Debug\LinkManager.dll
+D:\Практика C#\LinkManager\LinkManager\bin\Debug\LinkManager.pdb
+D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.AssemblyReference.cache
+D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.CoreCompileInputs.cache
+D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.dll
+D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.pdb

@@ -1,7 +1,7 @@
 ﻿// MyWpfWindow.xaml.cs
 using System.Windows;
 
-namespace YourNamespace
+namespace LinkManager
 {
     public partial class MyWpfWindow : Window
     {
@@ -12,7 +12,7 @@ namespace YourNamespace
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Button clicked!");
+            MessageBox.Show("Привет! WPF работает исправно! :)");
         }
     }
 }

@@ -2,7 +2,9 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace LinkManager
 {
@@ -15,7 +17,7 @@ namespace LinkManager
             Document doc = uiDoc.Document;
             WorksetConfiguration config = new WorksetConfiguration();
             List<RevitLinkType> links = new FilteredElementCollector(doc).OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
-            string dirName = "E:\\Программирование\\Visual Studio Solutions\\Программирование для BIM-платформ\\Практика\\Кейс_Менеджер связей\\ПроектXX_XX";
+            string dirName = Link_Manager.iconsDirectoryPath + @"ПроектXX_XX\";
             Link_Methods.LoadFrom(links, dirName, config);
             return Result.Succeeded;
         }

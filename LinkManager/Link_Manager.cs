@@ -8,11 +8,12 @@ namespace LinkManager
 {
     public class Link_Manager : IExternalApplication
     {
+        public static string assemblyLocation = Assembly.GetExecutingAssembly().Location, 
+                             tabName = "Менеджер связей", 
+                             iconsDirectoryPath = Path.GetDirectoryName(assemblyLocation) + @"\LinkManagerData\";
+
         public Result OnStartup(UIControlledApplication application)
         {
-            string assemblyLocation = Assembly.GetExecutingAssembly().Location,
-                   tabName = "Менеджер связей",
-                   iconsDirectoryPath = Path.GetDirectoryName(assemblyLocation) + @"\LinkManagerData\";
             application.CreateRibbonTab(tabName);
             RibbonPanel panel = application.CreateRibbonPanel(tabName, "Управление");
             PushButtonData buttonData1 = new PushButtonData(nameof(Link_Create), "Добавить связи", assemblyLocation, typeof(Link_Create).FullName)
@@ -23,8 +24,13 @@ namespace LinkManager
             {
                 LargeImage = new BitmapImage(new Uri(iconsDirectoryPath + @"blue.png"))
             };
+            PushButtonData buttonData3 = new PushButtonData(nameof(Link_TestUI), "Тестировать UI WPF", assemblyLocation, typeof(Link_TestUI).FullName)
+            {
+                LargeImage = new BitmapImage(new Uri(iconsDirectoryPath + @"blue.png"))
+            };
             panel.AddItem(buttonData1);
             panel.AddItem(buttonData2);
+            panel.AddItem(buttonData3);
             return Result.Succeeded;
         }
         public Result OnShutdown(UIControlledApplication application)

@@ -57,6 +57,7 @@
     <Compile Include="Link_Create.cs" />
     <Compile Include="Link_Manager.cs" />
     <Compile Include="Link_Methods.cs" />
+    <Compile Include="Link_TestUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\MyWpfWindow.xaml.cs">
       <DependentUpon>MyWpfWindow.xaml</DependentUpon>

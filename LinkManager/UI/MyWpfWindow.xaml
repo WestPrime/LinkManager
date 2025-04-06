@@ -1,5 +1,5 @@
 ﻿<!-- MyWpfWindow.xaml -->
-<Window x:Class="YourNamespace.MyWpfWindow"
+<Window x:Class="LinkManager.MyWpfWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="My Revit Add-in" Height="300" Width="400">

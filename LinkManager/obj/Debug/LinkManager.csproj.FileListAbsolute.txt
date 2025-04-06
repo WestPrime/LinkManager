@@ -1,0 +1,12 @@
+C:\Users\Andrey.Shevelev\source\repos\LinkManager\LinkManager\bin\Debug\LinkManager.dll
+C:\Users\Andrey.Shevelev\source\repos\LinkManager\LinkManager\bin\Debug\LinkManager.pdb
+C:\Users\Andrey.Shevelev\source\repos\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.AssemblyReference.cache
+C:\Users\Andrey.Shevelev\source\repos\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.CoreCompileInputs.cache
+C:\Users\Andrey.Shevelev\source\repos\LinkManager\LinkManager\obj\Debug\LinkManager.dll
+C:\Users\Andrey.Shevelev\source\repos\LinkManager\LinkManager\obj\Debug\LinkManager.pdb
+D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\bin\Debug\LinkManager.dll
+D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\bin\Debug\LinkManager.pdb
+D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.AssemblyReference.cache
+D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.CoreCompileInputs.cache
+D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\obj\Debug\LinkManager.dll
+D:\Программирование\Visual Studio Solutions\Revit\LinkManager\LinkManager\obj\Debug\LinkManager.pdb

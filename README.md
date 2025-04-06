@@ -1,4 +1,4 @@
-# RevitLinkManager
+# LinkManager
 Менеджер связей для Revit по заказу Tiver group
 
 # Описание

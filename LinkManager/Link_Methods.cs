@@ -40,6 +40,7 @@ namespace LinkManager
                 t.Commit();
             }
         }
+
         public static void LoadFrom(List<RevitLinkType> links, string dirName, WorksetConfiguration config) // Обновить из...
         {
             foreach (RevitLinkType link in links)
@@ -69,6 +70,7 @@ namespace LinkManager
                 }
             }
         }
+
         public static void Reload(List<RevitLinkType> links) // Обновить
         {
             foreach (var link in links)
@@ -76,6 +78,7 @@ namespace LinkManager
                 link.Reload();
             }
         }
+
         public static void Unload(List<RevitLinkType> links) // Выгрузить
         {
             foreach (var link in links)
@@ -83,6 +86,7 @@ namespace LinkManager
                 link.Unload(null);
             }
         }
+
         public static void Delete(Document doc, List<RevitLinkType> links) // Удалить
         {
             foreach (RevitLinkType link in links)

@@ -2,9 +2,12 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace LinkManager
 {

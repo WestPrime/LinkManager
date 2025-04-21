@@ -1,9 +1,7 @@
 ﻿using Autodesk.Revit.UI;
-using System;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace LinkManager
@@ -41,26 +39,17 @@ namespace LinkManager
         public Result OnStartup(UIControlledApplication application)
         {
             BitmapImage blueCircle = BitmapToBitmapImage(Properties.Resources.blue);
+            BitmapImage greenPlus = BitmapToBitmapImage(Properties.Resources.green_plus);
 
             application.CreateRibbonTab(tabName);
             RibbonPanel panel = application.CreateRibbonPanel(tabName, "Управление");
-            PushButtonData buttonData1 = new PushButtonData(nameof(Link_Create), "Добавить связи", assemblyLocation, typeof(Link_Create).FullName)
-            {
-                LargeImage = blueCircle
-            };
-            PushButtonData buttonData2 = new PushButtonData(nameof(Link_LoadFrom), "Обновить связи", assemblyLocation, typeof(Link_LoadFrom).FullName)
-            {
-                LargeImage = blueCircle
-            };
-            PushButtonData buttonData3 = new PushButtonData(nameof(Link_TestUI), "Тестировать UI WPF", assemblyLocation, typeof(Link_TestUI).FullName)
-            {
-                LargeImage = blueCircle
-            };
-            panel.AddItem(buttonData1);
-            panel.AddItem(buttonData2);
-            panel.AddItem(buttonData3);
+            PushButtonData buttonData1 = new PushButtonData(nameof(Link_Create),   "Добавить связи",     assemblyLocation, typeof(Link_Create).FullName  ) { LargeImage = greenPlus };
+            PushButtonData buttonData2 = new PushButtonData(nameof(Link_LoadFrom), "Обновить связи",     assemblyLocation, typeof(Link_LoadFrom).FullName) { LargeImage = blueCircle };
+            PushButtonData buttonData3 = new PushButtonData(nameof(Link_TestUI),   "Тестировать UI WPF", assemblyLocation, typeof(Link_TestUI).FullName  ) { LargeImage = blueCircle };
+            panel.AddItem(buttonData1); panel.AddItem(buttonData2); panel.AddItem(buttonData3);
             return Result.Succeeded;
         }
+
         public Result OnShutdown(UIControlledApplication application)
         {
             return Result.Succeeded;

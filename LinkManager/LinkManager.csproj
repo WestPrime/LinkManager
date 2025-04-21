@@ -59,20 +59,21 @@
     <Compile Include="Link_Manager.cs" />
     <Compile Include="Link_Methods.cs" />
     <Compile Include="Link_TestUI.cs" />
+    <Compile Include="ProjectLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\MyWpfWindow.xaml.cs">
-      <DependentUpon>MyWpfWindow.xaml</DependentUpon>
+    <Compile Include="UI\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\MyWpfWindow.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -82,10 +83,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blue.png" />
+    <Resource Include="Resources\blue.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\LinkManagerData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\green_plus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

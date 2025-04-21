@@ -1,13 +1,7 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Windows;
-using System.Windows.Media.Imaging;
 
 namespace LinkManager
 {
@@ -21,7 +15,7 @@ namespace LinkManager
                 new Application();
             }
 
-            var window = new MyWpfWindow();
+            var window = new MainWindow();
             window.ShowDialog();
 
             return Result.Succeeded;

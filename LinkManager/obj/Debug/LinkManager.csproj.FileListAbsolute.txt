@@ -16,9 +16,10 @@ D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.Asse
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.CoreCompileInputs.cache
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.dll
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.pdb
-D:\Практика C#\LinkManager\LinkManager\obj\Debug\UI\MyWpfWindow.baml
-D:\Практика C#\LinkManager\LinkManager\obj\Debug\UI\MyWpfWindow.g.cs
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager_MarkupCompile.cache
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.g.resources
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.Properties.Resources.resources
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.GenerateResource.cache
+D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager_MarkupCompile.lref
+D:\Практика C#\LinkManager\LinkManager\obj\Debug\UI\MainWindow.g.cs
+D:\Практика C#\LinkManager\LinkManager\obj\Debug\UI\MainWindow.baml

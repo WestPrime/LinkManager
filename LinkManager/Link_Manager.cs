@@ -32,20 +32,21 @@ namespace LinkManager
             }
         }
 
-        public static string assemblyLocation = Assembly.GetExecutingAssembly().Location, 
-                             tabName = "Менеджер связей", 
+        public static string assemblyLocation   = Assembly.GetExecutingAssembly().Location, 
+                             tabName            = "Менеджер связей", 
                              iconsDirectoryPath = Path.GetDirectoryName(assemblyLocation) + @"\LinkManagerData\";
 
         public Result OnStartup(UIControlledApplication application)
         {
             BitmapImage blueCircle = BitmapToBitmapImage(Properties.Resources.blue);
             BitmapImage greenPlus = BitmapToBitmapImage(Properties.Resources.green_plus);
+            BitmapImage reloadArrows = BitmapToBitmapImage(Properties.Resources.reload);
 
             application.CreateRibbonTab(tabName);
             RibbonPanel panel = application.CreateRibbonPanel(tabName, "Управление");
-            PushButtonData buttonData1 = new PushButtonData(nameof(Link_Create),   "Добавить связи",     assemblyLocation, typeof(Link_Create).FullName  ) { LargeImage = greenPlus };
-            PushButtonData buttonData2 = new PushButtonData(nameof(Link_LoadFrom), "Обновить связи",     assemblyLocation, typeof(Link_LoadFrom).FullName) { LargeImage = blueCircle };
-            PushButtonData buttonData3 = new PushButtonData(nameof(Link_TestUI),   "Тестировать UI WPF", assemblyLocation, typeof(Link_TestUI).FullName  ) { LargeImage = blueCircle };
+            PushButtonData buttonData1 = new PushButtonData(nameof(Link_Create),   "Добавить связи",     assemblyLocation, typeof(Link_Create).FullName  ) { LargeImage = greenPlus    };
+            PushButtonData buttonData2 = new PushButtonData(nameof(Link_LoadFrom), "Обновить связи",     assemblyLocation, typeof(Link_LoadFrom).FullName) { LargeImage = reloadArrows };
+            PushButtonData buttonData3 = new PushButtonData(nameof(Link_TestUI),   "Тестировать UI WPF", assemblyLocation, typeof(Link_TestUI).FullName  ) { LargeImage = blueCircle   };
             panel.AddItem(buttonData1); panel.AddItem(buttonData2); panel.AddItem(buttonData3);
             return Result.Succeeded;
         }

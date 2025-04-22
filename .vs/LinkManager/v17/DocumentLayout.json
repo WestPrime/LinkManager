@@ -3,14 +3,19 @@
   "WorkspaceRootPath": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|LinkManager||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\linkmanager\\link_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\link_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|d:\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 c#\\linkmanager\\linkmanager\\link_testui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\linkmanager\\projectlink.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\projectlink.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\linkmanager\\ui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\ui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\linkmanager\\link_testui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\link_testui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -18,20 +23,8 @@
       "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\link_methods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\linkmanager\\projectlink.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\projectlink.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|d:\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 c#\\linkmanager\\linkmanager\\ui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\ui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\linkmanager\\ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|d:\\\u043F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 c#\\linkmanager\\linkmanager\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
-      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -52,24 +45,8 @@
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LinkManager",
-              "DocumentMoniker": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\LinkManager.csproj",
-              "RelativeDocumentMoniker": "LinkManager\\LinkManager.csproj",
-              "ToolTip": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\LinkManager.csproj",
-              "RelativeToolTip": "LinkManager\\LinkManager.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-21T18:04:00.647Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\UI\\MainWindow.xaml",
               "RelativeDocumentMoniker": "LinkManager\\UI\\MainWindow.xaml",
@@ -81,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\UI\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "LinkManager\\UI\\MainWindow.xaml.cs",
@@ -89,12 +66,11 @@
               "RelativeToolTip": "LinkManager\\UI\\MainWindow.xaml.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAAACoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:51:41.522Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:51:41.522Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ProjectLink.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\ProjectLink.cs",
               "RelativeDocumentMoniker": "LinkManager\\ProjectLink.cs",
@@ -107,20 +83,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Link_Manager.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\Link_Manager.cs",
               "RelativeDocumentMoniker": "LinkManager\\Link_Manager.cs",
               "ToolTip": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\Link_Manager.cs",
               "RelativeToolTip": "LinkManager\\Link_Manager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T16:31:23.435Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Link_TestUI.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\Link_TestUI.cs",
               "RelativeDocumentMoniker": "LinkManager\\Link_TestUI.cs",
@@ -128,12 +104,11 @@
               "RelativeToolTip": "LinkManager\\Link_TestUI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T19:02:28.747Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T19:02:28.747Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Link_Methods.cs",
               "DocumentMoniker": "D:\\\u041F\u0440\u0430\u043A\u0442\u0438\u043A\u0430 C#\\LinkManager\\LinkManager\\Link_Methods.cs",
               "RelativeDocumentMoniker": "LinkManager\\Link_Methods.cs",
@@ -141,8 +116,7 @@
               "RelativeToolTip": "LinkManager\\Link_Methods.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T16:31:24.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T16:31:24.184Z"
             }
           ]
         }

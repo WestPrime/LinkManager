@@ -76,7 +76,7 @@
         <!-- Панель инструментов -->
         <Border Grid.Row="0" Background="White" Padding="10" CornerRadius="4" Margin="0 0 0 10">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Выбрать файл" Width="140" FontWeight="SemiBold">
+                <Button x:Name="ChooseFileButton" Content="Выбрать файл" Width="140" FontWeight="SemiBold" Click="ChooseFileButton_Click">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF00BBFF"/>
@@ -84,9 +84,9 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <CheckBox Content="Поиск в поддиректориях" Margin="20 0 0 0" VerticalAlignment="Center"/>
-                <TextBox Width="600" Text="Поиск по имени..." 
-                         Foreground="#666666" Padding="0,0,0,0" VerticalContentAlignment="Center" Margin="20,0,0,0"/>
+                <CheckBox x:Name="SubdirectorySearchCheckbox" Content="Поиск в поддиректориях" Margin="20 0 0 0" VerticalAlignment="Center" Checked="SubdirectorySearchCheckbox_Checked"/>
+                <TextBox x:Name="NameSearchField" Width="600" Text="Поиск по имени..." 
+                         Foreground="#666666" Padding="0,0,0,0" VerticalContentAlignment="Center" Margin="20,0,0,0" TextChanged="NameSearchField_TextChanged"/>
             </StackPanel>
         </Border>
 
@@ -140,7 +140,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Width="200" FontSize="26" Content="Обновить&#10;      все" Margin="0 0 10 0">
+                    <Button x:Name="RefreshAllButton" Width="200" FontSize="26" Content="Обновить&#10;      все" Margin="0 0 10 0" BorderBrush="Black" Click="RefreshAllButton_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF0057FF"/>
@@ -148,7 +148,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Button Width="200" FontSize="26" Content="Выгрузить" Style="{StaticResource {x:Type Button}}" Margin="0 0 0 0">
+                    <Button x:Name="UnloadButton" Width="200" FontSize="26" Content="Выгрузить" Style="{StaticResource {x:Type Button}}" Margin="0 0 0 0" Click="UnloadButton_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF979797"/>
@@ -156,7 +156,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Button Width="200" FontSize="26" Content="Удалить" Style="{StaticResource {x:Type Button}}" Margin="10 0 0 0">
+                    <Button x:Name="DeleteButton" Width="200" FontSize="26" Content="Удалить" Style="{StaticResource {x:Type Button}}" Margin="10 0 0 0" Click="DeleteButton_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFFF2626"/>
@@ -169,17 +169,17 @@
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <GroupBox Header="Тип размещения" Margin="0 0 20 0" Width="244">
                         <StackPanel>
-                            <RadioButton Content="По общим координатам" Margin="0 2"/>
-                            <RadioButton Content="По базовой точке" Margin="0 2"/>
-                            <RadioButton Content="Совмещение внутренних начал" Margin="0 2"/>
-                            <RadioButton Content="Получить координаты из модели" Margin="0 2"/>
+                            <RadioButton x:Name="ByCommonCoordinatesRadio" Content="По общим координатам" Margin="0 2"/>
+                            <RadioButton x:Name="ByBasePointRadio" Content="По базовой точке" Margin="0 2"/>
+                            <RadioButton x:Name="AlignInnerBeginningsRadio" Content="Совмещение внутренних начал" Margin="0 2"/>
+                            <RadioButton x:Name="GetCoordinatesFromModelRadio" Content="Получить координаты из модели" Margin="0 2"/>
                         </StackPanel>
                     </GroupBox>
 
                     <StackPanel Margin="20 0 0 0" Width="198">
-                        <CheckBox Content="Сохранить положения" Margin="0 5"/>
-                        <CheckBox Content="Передать координаты" Margin="0 5"/>
-                        <CheckBox Content="Показать только проблемы" Margin="0 5"/>
+                        <CheckBox x:Name="SavePositionsCheckbox" Content="Сохранить положения" Margin="0 5" Checked="SavePositionsCheckbox_Checked"/>
+                        <CheckBox x:Name="TransferCoordinatesRadio" Content="Передать координаты" Margin="0 5" Checked="TransferCoordinatesRadio_Checked"/>
+                        <CheckBox x:Name="ShowOnlyProblemsCheckbox" Content="Показать только проблемы" Margin="0 5" Checked="ShowOnlyProblemsCheckbox_Checked"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using System.ComponentModel;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
@@ -6,6 +7,9 @@ using System.Windows.Media.Imaging;
 
 namespace LinkManager
 {
+
+    [DisplayName("Revit Link Manager")]
+    [Description("C# Programming case")]
     public class Link_Manager : IExternalApplication
     {
         /// <summary>
@@ -38,16 +42,20 @@ namespace LinkManager
 
         public Result OnStartup(UIControlledApplication application)
         {
-            BitmapImage blueCircle = BitmapToBitmapImage(Properties.Resources.blue);
-            BitmapImage greenPlus = BitmapToBitmapImage(Properties.Resources.green_plus);
+            BitmapImage blueCircle =   BitmapToBitmapImage(Properties.Resources.blue);
+            BitmapImage greenPlus =    BitmapToBitmapImage(Properties.Resources.green_plus);
             BitmapImage reloadArrows = BitmapToBitmapImage(Properties.Resources.reload);
 
             application.CreateRibbonTab(tabName);
             RibbonPanel panel = application.CreateRibbonPanel(tabName, "Управление");
-            PushButtonData buttonData1 = new PushButtonData(nameof(Link_Create),   "Добавить связи",     assemblyLocation, typeof(Link_Create).FullName  ) { LargeImage = greenPlus    };
-            PushButtonData buttonData2 = new PushButtonData(nameof(Link_LoadFrom), "Обновить связи",     assemblyLocation, typeof(Link_LoadFrom).FullName) { LargeImage = reloadArrows };
-            PushButtonData buttonData3 = new PushButtonData(nameof(Link_TestUI),   "Тестировать UI WPF", assemblyLocation, typeof(Link_TestUI).FullName  ) { LargeImage = blueCircle   };
-            panel.AddItem(buttonData1); panel.AddItem(buttonData2); panel.AddItem(buttonData3);
+
+            PushButtonData[] pushButtons = new PushButtonData[]
+            {
+                new PushButtonData(nameof(Link_Create),   "Добавить связи",     assemblyLocation, typeof(Link_Create).FullName  ) { LargeImage = greenPlus    },
+                new PushButtonData(nameof(Link_LoadFrom), "Обновить связи",     assemblyLocation, typeof(Link_LoadFrom).FullName) { LargeImage = reloadArrows },
+                new PushButtonData(nameof(Link_TestUI),   "Тестировать UI WPF", assemblyLocation, typeof(Link_TestUI).FullName  ) { LargeImage = blueCircle   }
+            };
+            foreach (PushButtonData buttonData in pushButtons) panel.AddItem(buttonData); 
             return Result.Succeeded;
         }
 

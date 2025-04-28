@@ -3,11 +3,45 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows;
 using System;
+using System.Collections.Generic;
 
 namespace LinkManager
 {
     public partial class MainWindow : Window
     {
+        struct Options // RomodanEA: советую привязывать функции к этой штуке
+        {
+            string       ChosenFilePath;
+            bool         SearchInSubdirectories;
+            PositionType PositionType;
+            bool         SavePositions;
+            bool         TransferCoordinates;
+            bool         ShowOnlyProblems;
+        }
+
+        public enum PositionType
+        {
+            ByCommonCoordinatesRadio,
+            ByBasePointRadio,
+            AlignInnerBeginningsRadio,
+            GetCoordinatesFromModelRadio
+        }
+
+        public PositionType GetPositionType()
+        {
+            if (ByCommonCoordinatesRadio.IsChecked == true)
+                return PositionType.ByCommonCoordinatesRadio;
+            if (ByBasePointRadio.IsChecked == true)
+                return PositionType.ByBasePointRadio;
+            if (AlignInnerBeginningsRadio.IsChecked == true)
+                return PositionType.AlignInnerBeginningsRadio;
+            if (GetCoordinatesFromModelRadio.IsChecked == true)
+                return PositionType.GetCoordinatesFromModelRadio;
+
+            // Возвращаем значение по умолчанию, если ни один не выбран
+            return PositionType.ByCommonCoordinatesRadio; // или можно выбросить исключение
+        }
+
         public ObservableCollection<FileItem> FileItems { get; set; }
         public ObservableCollection<LinkItem> LinkItems { get; set; }
 
@@ -49,6 +83,96 @@ namespace LinkManager
                 // Логика обработки действия
                 MessageBox.Show($"Выполнено действие: {link.ActionText} для {link.LinkName}");
             }
+        }
+
+        /// <summary>
+        /// Когда нажата кнопка "Выбрать файл"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChooseFileButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Когда нажата кнопка "Обновить все"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RefreshAllButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Когда отмечается чекбокс "Искать в подпапках"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SubdirectorySearchCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Когда изменился текст в поле "Поиск по имени"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NameSearchField_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Когда нажата кнопка "Выгрузить"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UnloadButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Когда нажата кнопка "Удалить"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Когда отмечается чекбокс "Сохранить положения"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SavePositionsCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Когда отмечается чекбокс "Передать координаты"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TransferCoordinatesRadio_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Когда отмечается чекбокс "Показывать только проблемы"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowOnlyProblemsCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

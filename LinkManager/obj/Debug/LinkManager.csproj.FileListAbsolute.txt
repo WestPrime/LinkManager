@@ -23,3 +23,16 @@ D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.Gene
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\LinkManager_MarkupCompile.lref
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\UI\MainWindow.g.cs
 D:\Практика C#\LinkManager\LinkManager\obj\Debug\UI\MainWindow.baml
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\bin\Debug\LinkManager.dll
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\bin\Debug\LinkManager.pdb
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager.csproj.AssemblyReference.cache
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\UI\MainWindow.g.cs
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager_MarkupCompile.cache
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager_MarkupCompile.lref
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\UI\MainWindow.baml
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager.g.resources
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager.Properties.Resources.resources
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager.csproj.GenerateResource.cache
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager.csproj.CoreCompileInputs.cache
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager.dll
+D:\Программирование\Visual Studio Solutions\Программирование для BIM-платформ\Практика\LinkManager-main\LinkManager\obj\Debug\LinkManager.pdb

@@ -1,16 +1,22 @@
 ﻿using Autodesk.Revit.DB;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace LinkManager
 {
     public class Link_Methods
     {
+        public static List<RevitLinkType> GetLinks(Document doc) // Получить все ссылки в проекте
+        {
+            FilteredElementCollector collector = new FilteredElementCollector(doc);
+            List<RevitLinkType> links = collector.OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
+            return links;
+        }
         public static void Create(Document doc, string dirName, RevitLinkOptions options) // Добавить...
         {
             ImportPlacement placement = new ImportPlacement();
-
             MessageBoxResult result = MessageBox.Show("По общим координатам / с совмещением внутренних начал", 
                                                       "Выбор размещения связей в проекте", 
                                                       MessageBoxButton.YesNo, 
@@ -25,7 +31,6 @@ namespace LinkManager
                     placement = ImportPlacement.Origin;
                     break;
             }
-
             string[] paths = Directory.GetFiles(dirName, "*.rvt", SearchOption.AllDirectories);
             foreach (string pathName in paths)
             {
@@ -41,7 +46,6 @@ namespace LinkManager
                 t.Commit();
             }
         }
-
         public static void LoadFrom(List<RevitLinkType> links, string dirName, WorksetConfiguration config) // Обновить из...
         {
             foreach (RevitLinkType link in links)
@@ -79,7 +83,6 @@ namespace LinkManager
                 }
             }
         }
-
         public static void Reload(List<RevitLinkType> links) // Обновить
         {
             foreach (var link in links)
@@ -87,7 +90,6 @@ namespace LinkManager
                 link.Reload();
             }
         }
-
         public static void Unload(List<RevitLinkType> links) // Выгрузить
         {
             foreach (var link in links)
@@ -95,7 +97,6 @@ namespace LinkManager
                 link.Unload(null);
             }
         }
-
         public static void Delete(Document doc, List<RevitLinkType> links) // Удалить
         {
             foreach (RevitLinkType link in links)

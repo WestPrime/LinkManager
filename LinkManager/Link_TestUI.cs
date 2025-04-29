@@ -10,14 +10,11 @@ namespace LinkManager
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            if (Application.Current == null)
-            {
-                new Application();
-            }
-
-            var window = new MainWindow();
+            UIDocument uiDoc = commandData.Application.ActiveUIDocument;
+            Document doc = uiDoc.Document;
+            var window = new MainWindow(doc);
             window.ShowDialog();
-
+            window.Close();
             return Result.Succeeded;
         }
     }

@@ -148,7 +148,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="UnloadButton" Width="200" FontSize="26" Content="Выгрузить" Style="{StaticResource {x:Type Button}}" Margin="0 0 0 0" Click="UnloadButton_Click">
+                    <Button x:Name="UnloadAllButton" Width="200" FontSize="26" Content="Выгрузить&#10;      все" Style="{StaticResource {x:Type Button}}" Margin="0 0 0 0" Click="UnloadAllButton_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF979797"/>
@@ -156,7 +156,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Button x:Name="DeleteButton" Width="200" FontSize="26" Content="Удалить" Style="{StaticResource {x:Type Button}}" Margin="10 0 0 0" Click="DeleteButton_Click">
+                    <Button x:Name="DeleteAllButton" Width="200" FontSize="26" Content="Удалить все" Style="{StaticResource {x:Type Button}}" Margin="10 0 0 0" Click="DeleteAllButton_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFFF2626"/>

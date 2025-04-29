@@ -4,6 +4,8 @@ using System.Windows.Media;
 using System.Windows;
 using System;
 using System.Collections.Generic;
+using Autodesk.Revit.DB;
+using System.Windows.Controls;
 
 namespace LinkManager
 {
@@ -46,9 +48,12 @@ namespace LinkManager
         public ObservableCollection<LinkItem> LinkItems { get; set; }
 
         public ICommand ActionCommand { get; }
-
-        public MainWindow()
+        public Document doc;
+        public List<RevitLinkType> LinkTypes;
+        public MainWindow(Document document)
         {
+            doc = document;
+            LinkTypes = Link_Methods.GetLinks(doc);
             InitializeComponent();
 
             ActionCommand = new RelayCommand(ExecuteAction);
@@ -57,25 +62,46 @@ namespace LinkManager
             FileItems = new ObservableCollection<FileItem>();
             LinkItems = new ObservableCollection<LinkItem>();
 
-            // Заполнение тестовыми данными
+            // Заполнение текущими данными
+            UpdateData();
+
             FileItems.Add(new FileItem
             {
                 FileName = "Проект_А.rvt",
                 Path = @"C:\RevitProjects\Main"
             });
 
-            LinkItems.Add(new LinkItem
-            {
-                LinkName = "Инженерные системы.rvt",
-                Status = "Актуально",
-                StatusColor = Brushes.Green,
-                ActionText = "Обновить",
-                ActionColor = Brushes.DodgerBlue
-            });
-
             DataContext = this;
         }
-
+        private void UpdateData() // Обновление данных
+        {
+            LinkItems.Clear();
+            List<RevitLinkType> links = Link_Methods.GetLinks(doc);
+            if (links.Count != 0)
+            {
+                foreach (RevitLinkType link in LinkTypes)
+                {
+                    LinkItem item = new LinkItem
+                    {
+                        LinkName = link.Name,
+                        ActionText = "Обновить",
+                        ActionColor = Brushes.DodgerBlue
+                    };
+                    LinkedFileStatus link_status = link.GetLinkedFileStatus();
+                    if (link_status == LinkedFileStatus.Loaded)
+                    {
+                        item.Status = "Загружено";
+                        item.StatusColor = Brushes.Green;
+                    }
+                    else
+                    {
+                        item.Status = "Не загружено";
+                        item.StatusColor = Brushes.Red;
+                    }
+                    LinkItems.Add(item);
+                }
+            }
+        }
         private void ExecuteAction(object parameter)
         {
             if (parameter is LinkItem link)
@@ -102,7 +128,8 @@ namespace LinkManager
         /// <param name="e"></param>
         private void RefreshAllButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Link_Methods.Reload(LinkTypes);
+            UpdateData();
         }
 
         /// <summary>
@@ -126,23 +153,25 @@ namespace LinkManager
         }
 
         /// <summary>
-        /// Когда нажата кнопка "Выгрузить"
+        /// Когда нажата кнопка "Выгрузить все"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UnloadButton_Click(object sender, RoutedEventArgs e)
+        private void UnloadAllButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Link_Methods.Unload(LinkTypes);
+            UpdateData();
         }
 
         /// <summary>
-        /// Когда нажата кнопка "Удалить"
+        /// Когда нажата кнопка "Удалить все"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Link_Methods.Delete(doc, LinkTypes);
+            UpdateData();
         }
 
         /// <summary>

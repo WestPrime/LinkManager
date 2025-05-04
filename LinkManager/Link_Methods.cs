@@ -107,5 +107,28 @@ namespace LinkManager
                 t.Commit();
             }
         }
+        public static void SavePositions (List<RevitLinkType> links) // Сохранить положения
+        {
+            foreach(var link in links)
+            {
+                link.SavePositions(null);
+            }
+        }
+        public static void PublishCoordinates (Document doc, List<RevitLinkType> links) // Передать координаты в связанную модель
+        {
+            foreach(var link in links)
+            {
+                ProjectLocation projectLocation = link.Document.ActiveProjectLocation;
+                LinkElementId locationId = new LinkElementId(link.Id, projectLocation.Id);
+                doc.PublishCoordinates(locationId);
+            }
+        }
+        public static void AcquierCoordinates(Document doc, List<RevitLinkType> links) // Получить координаты из связанной модели
+        {
+            foreach (var link in links)
+            {
+                doc.AcquireCoordinates(link.Id);
+            }
+        }
     }
 }

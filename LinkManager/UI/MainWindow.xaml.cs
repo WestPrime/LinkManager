@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using Autodesk.Revit.DB;
 using System.Windows.Controls;
+using System.IO;
 
 namespace LinkManager
 {
@@ -50,11 +51,14 @@ namespace LinkManager
         public ICommand ActionCommand { get; }
         public Document doc;
         public List<RevitLinkType> LinkTypes;
+        public string[] paths;
         public MainWindow(Document document)
         {
             doc = document;
             LinkTypes = Link_Methods.GetLinks(doc);
             InitializeComponent();
+            string dirName = NameSearchField.Text;
+            paths = Directory.GetFiles(dirName, "*.rvt", SearchOption.AllDirectories);
 
             ActionCommand = new RelayCommand(ExecuteAction);
 
@@ -65,19 +69,13 @@ namespace LinkManager
             // Заполнение текущими данными
             UpdateData();
 
-            FileItems.Add(new FileItem
-            {
-                FileName = "Проект_А.rvt",
-                Path = @"C:\RevitProjects\Main"
-            });
-
             DataContext = this;
         }
         private void UpdateData() // Обновление данных
         {
+            FileItems.Clear();
             LinkItems.Clear();
-            List<RevitLinkType> links = Link_Methods.GetLinks(doc);
-            if (links.Count != 0)
+            if (LinkTypes.Count != 0)
             {
                 foreach (RevitLinkType link in LinkTypes)
                 {
@@ -99,6 +97,19 @@ namespace LinkManager
                         item.StatusColor = Brushes.Red;
                     }
                     LinkItems.Add(item);
+                }
+            }
+            if (paths.Length != 0)
+            {
+                foreach (string path in paths)
+                {
+                    string filename = new DirectoryInfo(path).Name;
+                    FileItem item = new FileItem
+                    {
+                        FileName = filename,
+                        Path = path,
+                    };
+                    FileItems.Add(item);
                 }
             }
         }

@@ -117,7 +117,7 @@
                             <GridViewColumn Header="" Width="50">
                                 <GridViewColumn.HeaderTemplate>
                                     <DataTemplate>
-                                        <CheckBox Content="Все" 
+                                        <CheckBox x:Name="AllCheckBox" Content="Все" Checked="AllCheckBox_Checked" Unchecked="AllCheckBox_Unchecked"
                                       IsChecked="{Binding DataContext.IsAllSelected, RelativeSource={RelativeSource AncestorType=ListView}, Mode=TwoWay}"
                                       Command="{Binding DataContext.ToggleAllCommand}"/>
                                     </DataTemplate>
@@ -151,9 +151,9 @@
                             <GridViewColumn Header="" Width="50">
                                 <GridViewColumn.HeaderTemplate>
                                     <DataTemplate>
-                                        <CheckBox Content="Все" 
-                                      IsChecked="{Binding DataContext.IsAllSelected, RelativeSource={RelativeSource AncestorType=ListView}, Mode=TwoWay}"
-                                      Command="{Binding DataContext.ToggleAllCommand}"/>
+                                        <CheckBox   Content="Все" 
+                                                    IsChecked="{Binding DataContext.IsAllSelected, RelativeSource={RelativeSource AncestorType=ListView}, Mode=TwoWay}"
+                                                    Command="{Binding DataContext.ToggleAllCommand}" Checked="AllCheckBox_Checked" Unchecked="AllCheckBox_Unchecked"/>
                                     </DataTemplate>
                                 </GridViewColumn.HeaderTemplate>
                                 <GridViewColumn.CellTemplate>

@@ -224,6 +224,34 @@ namespace LinkManager
         {
 
         }
+
+        private void AllCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (LinksListView.ItemsSource is System.Collections.IEnumerable items)
+            {
+                foreach (var item in items)
+                {
+                    if (item is LinkItem linkItem) // Замените YourItemType на тип ваших элементов
+                    {
+                        linkItem.IsSelected = true;
+                    }
+                }
+            }
+        }
+
+        private void AllCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (LinksListView.ItemsSource is System.Collections.IEnumerable items)
+            {
+                foreach (var item in items)
+                {
+                    if (item is LinkItem linkItem) // Замените YourItemType на тип ваших элементов
+                    {
+                        linkItem.IsSelected = false;
+                    }
+                }
+            }
+        }
     }
 
     public class FileItem
@@ -239,6 +267,17 @@ namespace LinkManager
         public Brush StatusColor { get; set; }
         public string ActionText { get; set; }
         public Brush ActionColor { get; set; }
+
+        public RevitLinkType ToRevitLinkType
+        {
+            get
+            {
+                return new RevitLinkType()
+                {
+                    // Указать параметры возвращаемого
+                };
+            }
+        }
     }
 
     // Реализация RelayCommand

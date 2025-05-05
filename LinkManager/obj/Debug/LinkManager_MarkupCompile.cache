@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\Andrey\Documents\GitHub\LinkManager\LinkManager\obj\Debug\
+D:\Практика C#\LinkManager\LinkManager\obj\Debug\
 LinkManager
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 11533086365
 
-92115719530
+10-257469645
 161914413214
 UI\MainWindow.xaml;
 
-False
+True
 

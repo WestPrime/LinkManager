@@ -84,7 +84,7 @@
                 <TextBox x:Name="NameSearchField" Width="600" Text="Укажите путь в формате D:\....\...." 
                          Foreground="#666666" Padding="5,0,0,0" VerticalContentAlignment="Center" Margin="0,0,0,0" TextChanged="NameSearchField_TextChanged"/>
                 <!--тут имя кнопки не поменяно, нужен функционал выбора папки:-->
-                <Button x:Name="ChooseFileButton" Content="Обзор..." Margin="15,5,0,5" Width="110" FontWeight="SemiBold" Click="ChooseFileButton_Click" FontSize="14">
+                <Button x:Name="ChooseFileButton" Content="Обзор..." Margin="15,0,0,0" Width="110" FontWeight="SemiBold" Click="ChooseFileButton_Click" FontSize="14">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF2AA4D0"/>

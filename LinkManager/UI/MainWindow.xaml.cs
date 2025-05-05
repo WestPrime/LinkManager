@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using Autodesk.Revit.DB;
 using System.Windows.Controls;
 using System.IO;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 
 namespace LinkManager
 {
@@ -129,7 +131,15 @@ namespace LinkManager
         /// <param name="e"></param>
         private void ChooseFileButton_Click(object sender, RoutedEventArgs e)
         {
+            using (var dialog = new FolderBrowserDialog())
+            {
+                DialogResult result = dialog.ShowDialog();
 
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    NameSearchField.Text = dialog.SelectedPath;
+                }
+            }
         }
 
         /// <summary>

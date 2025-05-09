@@ -161,6 +161,25 @@ namespace LinkManager
                 }
             }
         }
+
+        private void UpdateDataFileItems() // Обновление данных FileItems
+        {
+            FileItems.Clear();
+            if (paths.Length != 0)
+            {
+                foreach (string path in paths)
+                {
+                    string filename = new DirectoryInfo(path).Name;
+                    FileItem item = new FileItem
+                    {
+                        FileName = filename,
+                        Path = path,
+                    };
+                    FileItems.Add(item);
+                }
+            }
+        }
+
         private void ExecuteAction(object parameter)
         {
             if (parameter is LinkItem link)
@@ -185,6 +204,54 @@ namespace LinkManager
                 {
                     NameSearchField.Text = dialog.SelectedPath;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Когда нажата кнопка "Поиск"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <summary>
+        /// Когда нажата кнопка "Поиск"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdateFileName_Click(object sender, RoutedEventArgs e)
+        {
+            string directoryPath = NameSearchField.Text;
+
+            if (string.IsNullOrWhiteSpace(directoryPath) || !Directory.Exists(directoryPath))
+            {
+                MessageBox.Show("Указан некорректный путь. Пожалуйста, выберите существующую директорию.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            try
+            {
+                FileItems.Clear();
+                SearchOption searchOption = SearchOption.AllDirectories;
+                string[] files = Directory.GetFiles(directoryPath, "*.rvt", searchOption);
+
+                foreach (string filePath in files)
+                {
+                    string fileName = Path.GetFileName(filePath); // Имя файла без пути
+                    FileItems.Add(new FileItem
+                    {
+                        FileName = fileName,
+                        Path = filePath
+                    });
+                }
+
+                // Если файлы не найдены, показываем сообщение
+                if (FileItems.Count == 0)
+                {
+                    MessageBox.Show("Файлы формата .rvt не найдены в указанной директории.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обработка ошибок при поиске файлов
+                MessageBox.Show($"Произошла ошибка при поиске файлов: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

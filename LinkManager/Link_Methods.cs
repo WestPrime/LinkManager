@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,10 +32,7 @@ namespace LinkManager
                     placement = ImportPlacement.Origin;
                     break;
             }
-            string[] paths = Directory.GetFiles(dirName, "*.rvt", SearchOption.AllDirectories);
-            foreach (string pathName in paths)
-            {
-                FilePath path = new FilePath(pathName);
+                FilePath path = new FilePath(dirName);
                 Transaction t = new Transaction(doc, "Добавить связь");
                 t.Start();
                 try
@@ -44,7 +42,6 @@ namespace LinkManager
                 }
                 catch { }
                 t.Commit();
-            }
         }
         public static void LoadFrom(List<RevitLinkType> links, string dirName, WorksetConfiguration config) // Обновить из...
         {

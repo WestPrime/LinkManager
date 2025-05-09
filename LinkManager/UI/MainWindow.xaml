@@ -110,8 +110,7 @@
                  Text="Укажите путь в формате D:\....\...." 
                  Foreground="#666666" Padding="5,0,0,0" 
                  VerticalContentAlignment="Center" 
-                 Margin="0,0,15,0" 
-                 TextChanged="NameSearchField_TextChanged"/>
+                 Margin="0,0,15,0"/>
             </DockPanel>
         </Border>
 
@@ -208,8 +207,8 @@
 
                 <!-- Поле слева -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Width="490">
-                    <!--имя кнопки тут не поменяно, функция при клике тоже:-->
-                    <Button x:Name="RefreshAllButton" Width="200" FontSize="24" Content="Добавить&#xA;   связи" Margin="0 0 10 0" BorderBrush="Black" Click="RefreshAllButton_Click">
+                    <!--Кнопка "Добавить связи"-->
+                    <Button x:Name="CreateLinkButton" Width="200" FontSize="24" Content="Добавить&#xA;   связи" Margin="0 0 10 0" BorderBrush="Black" Click="CreateLinkButton_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFA5A5A5"/>
@@ -217,7 +216,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-
+                    <!--Тип размещения-->
                     <GroupBox Header="Тип размещения" Margin="10 0 20 0" Width="250">
                         <StackPanel>
                             <RadioButton x:Name="ByCommonCoordinatesRadio" Content="По общим координатам" Margin="0 2"/>
@@ -230,8 +229,8 @@
 
                 <!-- Поле справа -->
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" Width="450">
-                    <!--имя кнопки тут не поменяно, функция при клике тоже:-->
-                    <Button x:Name="UnloadAllButton" Width="200" FontSize="24" Content="Выполнить&#xA;  действие" Style="{StaticResource {x:Type Button}}" Margin="15,0,0,0" Click="UnloadAllButton_Click">
+                    <!--Кнопка "Обновить"-->
+                    <Button x:Name="ReloadButton" Width="200" FontSize="24" Content="Обновить" Style="{StaticResource {x:Type Button}}" Margin="15,-80,0,0" Click="ReloadButton_Click" Height="40">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF2AA4D0"/>
@@ -239,11 +238,29 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-
+                    <!--Кнопка "Выгрузить"-->
+                    <Button x:Name="UnloadButton" Width="200" FontSize="24" Content="Выгрузить" Style="{StaticResource {x:Type Button}}" Margin="-200,0,0,0" Click="UnloadButton_Click" Height="40">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF2AA4D0"/>
+                                <GradientStop Color="#FF1423AF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <!--Кнопка "Удалить"-->
+                    <Button x:Name="DeleteButton" Width="200" FontSize="24" Content="Удалить" Style="{StaticResource {x:Type Button}}" Margin="-200,80,0,0" Click="DeleteButton_Click" Height="40">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF2AA4D0"/>
+                                <GradientStop Color="#FF1423AF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <!--Параметры-->
                     <StackPanel Margin="20 15 0 0" Width="200">
                         <CheckBox x:Name="SavePositionsCheckbox" Content="Сохранить положения" Margin="0 5" Checked="SavePositionsCheckbox_Checked"/>
                         <CheckBox x:Name="TransferCoordinatesRadio" Content="Передать координаты" Margin="0 5" Checked="TransferCoordinatesRadio_Checked"/>
-                        <CheckBox x:Name="ShowOnlyProblemsCheckbox" Content="Показать только проблемы" Margin="0 5" Checked="ShowOnlyProblemsCheckbox_Checked"/>
+                        <CheckBox x:Name="GetCoordinatesRadio" Content="Получить координаты" Margin="0 5" Checked="GetCoordinatesRadio_Checked"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

@@ -131,7 +131,8 @@ namespace LinkManager
                     {
                         LinkName = link.Name,
                         ActionText = "Обновить",
-                        ActionColor = Brushes.DodgerBlue
+                        ActionColor = Brushes.DodgerBlue,
+                        LinkType = link
                     };
                     LinkedFileStatus link_status = link.GetLinkedFileStatus();
                     if (link_status == LinkedFileStatus.Loaded)
@@ -147,24 +148,6 @@ namespace LinkManager
                     LinkItems.Add(item);
                 }
             }
-            if (paths.Length != 0)
-            {
-                foreach (string path in paths)
-                {
-                    string filename = new DirectoryInfo(path).Name;
-                    FileItem item = new FileItem
-                    {
-                        FileName = filename,
-                        Path = path,
-                    };
-                    FileItems.Add(item);
-                }
-            }
-        }
-
-        private void UpdateDataFileItems() // Обновление данных FileItems
-        {
-            FileItems.Clear();
             if (paths.Length != 0)
             {
                 foreach (string path in paths)
@@ -206,12 +189,6 @@ namespace LinkManager
                 }
             }
         }
-
-        /// <summary>
-        /// Когда нажата кнопка "Поиск"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         /// <summary>
         /// Когда нажата кнопка "Поиск"
         /// </summary>
@@ -256,55 +233,83 @@ namespace LinkManager
         }
 
         /// <summary>
-        /// Когда нажата кнопка "Обновить все"
+        /// Когда нажата кнопка "Добавить связи"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RefreshAllButton_Click(object sender, RoutedEventArgs e)
+        private void CreateLinkButton_Click(object sender, RoutedEventArgs e)
         {
-            Link_Methods.Reload(LinkTypes);
+            RevitLinkOptions options = new RevitLinkOptions(true);
+            foreach (FileItem item in FileItems)
+            {
+                if (item.IsSelected)
+                {
+                    string dir = item.FileName;
+                    Link_Methods.Create(doc, dir, options);
+                }
+            }
             UpdateData();
         }
 
         /// <summary>
-        /// Когда отмечается чекбокс "Искать в подпапках"
+        /// Когда нажата кнопка "Обновить"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SubdirectorySearchCheckbox_Checked(object sender, RoutedEventArgs e)
+        private void ReloadButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        /// <summary>
-        /// Когда изменился текст в поле "Поиск по имени"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NameSearchField_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Когда нажата кнопка "Выгрузить все"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UnloadAllButton_Click(object sender, RoutedEventArgs e)
-        {
-            Link_Methods.Unload(LinkTypes);
+            List<RevitLinkType> links = new List<RevitLinkType>();
+            foreach (LinkItem item in LinkItems)
+            {
+                if (item.IsSelected)
+                {
+                    RevitLinkType linkType = item.LinkType;
+                    links.Add(linkType);
+                }
+            }
+            Link_Methods.Reload(links);
             UpdateData();
         }
 
         /// <summary>
-        /// Когда нажата кнопка "Удалить все"
+        /// Когда нажата кнопка "Выгрузить"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DeleteAllButton_Click(object sender, RoutedEventArgs e)
+        private void UnloadButton_Click(object sender, RoutedEventArgs e)
         {
-            Link_Methods.Delete(doc, LinkTypes);
+            List<RevitLinkType> links = new List<RevitLinkType>();
+            foreach (LinkItem item in LinkItems)
+            {
+                if (item.IsSelected)
+                {
+                    RevitLinkType linkType = item.LinkType;
+                    links.Add(linkType);
+                }
+            }
+            Link_Methods.Unload(links);
+            UpdateData();
+        }
+
+        /// <summary>
+        /// Когда нажата кнопка "Удалить"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e) // ПОКА НЕ РАБОТАЕТ!!!
+        {
+            //List<RevitLinkType> links = new List<RevitLinkType>();
+            //foreach (LinkItem item in LinkItems)
+            //{
+            //    if (item.IsSelected == true)
+            //    {
+            //        RevitLinkType linkType = item.LinkType;
+            //        links.Add(linkType);
+            //    }
+            //}
+            //Link_Methods.Delete(doc, links);
             UpdateData();
         }
 
@@ -329,11 +334,11 @@ namespace LinkManager
         }
 
         /// <summary>
-        /// Когда отмечается чекбокс "Показывать только проблемы"
+        /// Когда отмечается чекбокс "Получить координаты"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ShowOnlyProblemsCheckbox_Checked(object sender, RoutedEventArgs e)
+        private void GetCoordinatesRadio_Checked(object sender, RoutedEventArgs e)
         {
 
         }
@@ -436,6 +441,7 @@ public class FileItem : INotifyPropertyChanged
     private bool _isSelected;
     public string FileName { get; set; }
     public string Path { get; set; }
+    public RevitLinkType LinkType { get; set; }
 
     public bool IsSelected
     {
@@ -467,17 +473,7 @@ public class LinkItem : INotifyPropertyChanged
     public Brush StatusColor { get; set; }
     public string ActionText { get; set; }
     public Brush ActionColor { get; set; }
-
-    //public RevitLinkType ToRevitLinkType
-    //{
-    //    get
-    //    {
-    //        return new RevitLinkType()
-    //        {
-    //            // Указать параметры возвращаемого
-    //        };
-    //    }
-    //}
+    public RevitLinkType LinkType { get; set; }
 
     public bool IsSelected
     {

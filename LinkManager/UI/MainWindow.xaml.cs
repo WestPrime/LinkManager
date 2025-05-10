@@ -123,6 +123,7 @@ namespace LinkManager
         {
             FileItems.Clear();
             LinkItems.Clear();
+            LinkTypes = Link_Methods.GetLinks(doc);
             if (LinkTypes.Count != 0)
             {
                 foreach (RevitLinkType link in LinkTypes)
@@ -441,7 +442,6 @@ public class FileItem : INotifyPropertyChanged
     private bool _isSelected;
     public string FileName { get; set; }
     public string Path { get; set; }
-    public RevitLinkType LinkType { get; set; }
 
     public bool IsSelected
     {

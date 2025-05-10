@@ -51,8 +51,6 @@ namespace LinkManager
 
             PushButtonData[] pushButtons = new PushButtonData[]
             {
-                new PushButtonData(nameof(Link_Create),   "Добавить связи",     assemblyLocation, typeof(Link_Create).FullName  ) { LargeImage = greenPlus    },
-                new PushButtonData(nameof(Link_LoadFrom), "Обновить связи",     assemblyLocation, typeof(Link_LoadFrom).FullName) { LargeImage = reloadArrows },
                 new PushButtonData(nameof(Link_TestUI),   "Тестировать UI WPF", assemblyLocation, typeof(Link_TestUI).FullName  ) { LargeImage = blueCircle   }
             };
             foreach (PushButtonData buttonData in pushButtons) panel.AddItem(buttonData); 

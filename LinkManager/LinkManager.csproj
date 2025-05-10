@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Link_LoadFrom.cs" />
-    <Compile Include="Link_Create.cs" />
     <Compile Include="Link_Manager.cs" />
     <Compile Include="Link_Methods.cs" />
     <Compile Include="Link_TestUI.cs" />

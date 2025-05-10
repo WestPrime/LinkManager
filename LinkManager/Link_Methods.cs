@@ -15,33 +15,18 @@ namespace LinkManager
             List<RevitLinkType> links = collector.OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
             return links;
         }
-        public static void Create(Document doc, string dirName, RevitLinkOptions options) // Добавить...
+        public static void Create(Document doc, string dirName, RevitLinkOptions options, ImportPlacement placement) // Добавить...
         {
-            ImportPlacement placement = new ImportPlacement();
-            MessageBoxResult result = MessageBox.Show("По общим координатам / с совмещением внутренних начал", 
-                                                      "Выбор размещения связей в проекте", 
-                                                      MessageBoxButton.YesNo, 
-                                                      MessageBoxImage.Information, 
-                                                      MessageBoxResult.Yes);
-            switch (result)
+            FilePath path = new FilePath(dirName);
+            Transaction t = new Transaction(doc, "Добавить связь");
+            t.Start();
+            try
             {
-                case MessageBoxResult.Yes:
-                    placement = ImportPlacement.Shared;
-                    break;
-                case MessageBoxResult.No:
-                    placement = ImportPlacement.Origin;
-                    break;
+                LinkLoadResult link = RevitLinkType.Create(doc, path, options);
+                RevitLinkInstance.Create(doc, link.ElementId, placement);
             }
-                FilePath path = new FilePath(dirName);
-                Transaction t = new Transaction(doc, "Добавить связь");
-                t.Start();
-                try
-                {
-                    LinkLoadResult link = RevitLinkType.Create(doc, path, options);
-                    RevitLinkInstance.Create(doc, link.ElementId, placement);
-                }
-                catch { }
-                t.Commit();
+            catch { }
+            t.Commit();
         }
         public static void LoadFrom(List<RevitLinkType> links, string dirName, WorksetConfiguration config) // Обновить из...
         {

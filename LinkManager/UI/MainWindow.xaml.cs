@@ -11,44 +11,12 @@ using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
 using System.ComponentModel;
 using System.Linq;
+using Autodesk.Revit.UI;
 
 namespace LinkManager
 {
     public partial class MainWindow : Window
     {
-        struct Options // RomodanEA: советую привязывать функции к этой штуке
-        {
-            string ChosenFilePath;
-            bool SearchInSubdirectories;
-            PositionType PositionType;
-            bool SavePositions;
-            bool TransferCoordinates;
-            bool ShowOnlyProblems;
-        }
-
-        public enum PositionType
-        {
-            ByCommonCoordinatesRadio,
-            ByBasePointRadio,
-            AlignInnerBeginningsRadio,
-            GetCoordinatesFromModelRadio
-        }
-
-        public PositionType GetPositionType()
-        {
-            if (ByCommonCoordinatesRadio.IsChecked == true)
-                return PositionType.ByCommonCoordinatesRadio;
-            if (ByBasePointRadio.IsChecked == true)
-                return PositionType.ByBasePointRadio;
-            if (AlignInnerBeginningsRadio.IsChecked == true)
-                return PositionType.AlignInnerBeginningsRadio;
-            if (GetCoordinatesFromModelRadio.IsChecked == true)
-                return PositionType.GetCoordinatesFromModelRadio;
-
-            // Возвращаем значение по умолчанию, если ни один не выбран
-            return PositionType.ByCommonCoordinatesRadio; // или можно выбросить исключение
-        }
-
         public ObservableCollection<FileItem> FileItems { get; set; }
         public ObservableCollection<LinkItem> LinkItems { get; set; }
 
@@ -97,8 +65,6 @@ namespace LinkManager
             LinkTypes = Link_Methods.GetLinks(doc);
             InitializeComponent();
             DataContext = this;
-            string dirName = NameSearchField.Text;
-            paths = Directory.GetFiles(dirName, "*.rvt", SearchOption.AllDirectories);
 
             ActionCommand = new RelayCommand(ExecuteAction);
 
@@ -149,18 +115,27 @@ namespace LinkManager
                     LinkItems.Add(item);
                 }
             }
-            if (paths.Length != 0)
+            string dirName = NameSearchField.Text;
+            try
             {
-                foreach (string path in paths)
+                paths = Directory.GetFiles(dirName, "*.rvt", SearchOption.AllDirectories);
+                if (paths.Length != 0)
                 {
-                    string filename = new DirectoryInfo(path).Name;
-                    FileItem item = new FileItem
+                    foreach (string path in paths)
                     {
-                        FileName = filename,
-                        Path = path,
-                    };
-                    FileItems.Add(item);
+                        string filename = new DirectoryInfo(path).Name;
+                        FileItem item = new FileItem
+                        {
+                            FileName = filename,
+                            Path = path,
+                        };
+                        FileItems.Add(item);
+                    }
                 }
+            }
+            catch
+            {
+
             }
         }
 
@@ -241,12 +216,21 @@ namespace LinkManager
         private void CreateLinkButton_Click(object sender, RoutedEventArgs e)
         {
             RevitLinkOptions options = new RevitLinkOptions(true);
+            ImportPlacement placement = ImportPlacement.Shared;
+            if (SharedCoordinatesRadio.IsChecked.Value)
+            {
+                placement = ImportPlacement.Shared; 
+            }
+            if (OriginRadio.IsChecked.Value)
+            {
+                placement = ImportPlacement.Origin;
+            }
             foreach (FileItem item in FileItems)
             {
                 if (item.IsSelected)
                 {
-                    string dir = item.FileName;
-                    Link_Methods.Create(doc, dir, options);
+                    string dir = item.Path;
+                    Link_Methods.Create(doc, dir, options, placement);
                 }
             }
             UpdateData();

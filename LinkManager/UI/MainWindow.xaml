@@ -107,7 +107,6 @@
                     </Button.Background>
                 </Button>
                 <TextBox x:Name="NameSearchField" 
-                 Text="Укажите путь в формате D:\....\...." 
                  Foreground="#666666" Padding="5,0,0,0" 
                  VerticalContentAlignment="Center" 
                  Margin="0,0,15,0"/>
@@ -219,10 +218,8 @@
                     <!--Тип размещения-->
                     <GroupBox Header="Тип размещения" Margin="10 0 20 0" Width="250">
                         <StackPanel>
-                            <RadioButton x:Name="ByCommonCoordinatesRadio" Content="По общим координатам" Margin="0 2"/>
-                            <RadioButton x:Name="ByBasePointRadio" Content="По базовой точке" Margin="0 2"/>
-                            <RadioButton x:Name="AlignInnerBeginningsRadio" Content="Совмещение внутренних начал" Margin="0 2"/>
-                            <RadioButton x:Name="GetCoordinatesFromModelRadio" Content="Получить координаты из модели" Margin="0 2"/>
+                            <RadioButton x:Name="SharedCoordinatesRadio" Content="По общим координатам" Margin="0 2"/>
+                            <RadioButton x:Name="OriginRadio" Content="Совмещение внутренних начал" Margin="0 2"/>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>

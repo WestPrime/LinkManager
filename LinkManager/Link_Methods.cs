@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Shapes;
 
 namespace LinkManager
 {
@@ -14,6 +16,13 @@ namespace LinkManager
             FilteredElementCollector collector = new FilteredElementCollector(doc);
             List<RevitLinkType> links = collector.OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
             return links;
+        }
+        public static void ChangeType(Document doc, RevitLinkType link, AttachmentType type) // Изменить тип связи
+        {
+            Transaction t = new Transaction(doc, "Изменить тип связи");
+            t.Start();
+            link.AttachmentType = type;
+            t.Commit();
         }
         public static void Create(Document doc, string dirName, RevitLinkOptions options, ImportPlacement placement) // Добавить...
         {
@@ -32,49 +41,31 @@ namespace LinkManager
         {
             foreach (RevitLinkType link in links)
             {
-                string[] paths = Directory.GetFiles(dirName, link.Name, SearchOption.AllDirectories);
-                if (paths.Length != 0)
+                try
                 {
-                    foreach (string pathName in paths)
+                    string[] paths = Directory.GetFiles(dirName, link.Name, SearchOption.AllDirectories);
+                    if (paths.Length != 0)
                     {
-                        FilePath path = new FilePath(pathName);
-                        link.LoadFrom(path, config);
+                        foreach (string pathName in paths)
+                        {
+                            FilePath path = new FilePath(pathName);
+                            link.LoadFrom(path, config);
+                        }
                     }
                 }
-                else
-                {
-                    MessageBoxResult result = MessageBox.Show(
-                        "Связь " + link.Name + " не найдена в указанной директории",
-                        "Ошибка обновления связи",
-                        MessageBoxButton.YesNo,
-                        MessageBoxImage.Error,
-                        MessageBoxResult.Yes
-                    );
-
-                    switch (result)
-                    {
-                        case MessageBoxResult.Yes: // Retry
-                            LoadFrom(new List<RevitLinkType> { link }, dirName, config);
-                            break;
-
-                        case MessageBoxResult.No: // Cancel
-                        default:
-                            // Дополнительная обработка отмены при необходимости
-                            break;
-                    }
-                }
+                catch { }
             }
         }
         public static void Reload(List<RevitLinkType> links) // Обновить
         {
-            foreach (var link in links)
+            foreach (RevitLinkType link in links)
             {
                 link.Reload();
             }
         }
         public static void Unload(List<RevitLinkType> links) // Выгрузить
         {
-            foreach (var link in links)
+            foreach (RevitLinkType link in links)
             {
                 link.Unload(null);
             }

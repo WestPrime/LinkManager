@@ -19,6 +19,7 @@ namespace LinkManager
     {
         public ObservableCollection<FileItem> FileItems { get; set; }
         public ObservableCollection<LinkItem> LinkItems { get; set; }
+        public ObservableCollection<AttachmentTypeItem> AttachmentTypes { get; set; }
 
         // Код для чекбоксов
         private bool _isAllFilesSelected;
@@ -54,7 +55,6 @@ namespace LinkManager
         public ICommand ToggleAllFilesCommand { get; }
         public ICommand ToggleAllLinksCommand { get; }
 
-
         public ICommand ActionCommand { get; }
         public Document doc;
         public List<RevitLinkType> LinkTypes;
@@ -66,12 +66,14 @@ namespace LinkManager
             InitializeComponent();
             DataContext = this;
 
-            ActionCommand = new RelayCommand(ExecuteAction);
-
             // Инициализация коллекций
             FileItems = new ObservableCollection<FileItem>();
             LinkItems = new ObservableCollection<LinkItem>();
-
+            AttachmentTypes = new ObservableCollection<AttachmentTypeItem>
+            {
+                new AttachmentTypeItem { Text = "Наложение", Value = AttachmentType.Overlay },
+                new AttachmentTypeItem { Text = "Прикрепление", Value = AttachmentType.Attachment }
+            };
             // Команда для чекбокса "Все"
             ToggleAllFilesCommand = new RelayCommand(param =>
             {
@@ -87,7 +89,6 @@ namespace LinkManager
         }
         private void UpdateData() // Обновление данных
         {
-            FileItems.Clear();
             LinkItems.Clear();
             LinkTypes = Link_Methods.GetLinks(doc);
             if (LinkTypes.Count != 0)
@@ -101,50 +102,29 @@ namespace LinkManager
                         ActionColor = Brushes.DodgerBlue,
                         LinkType = link
                     };
+                    if (link.AttachmentType == AttachmentType.Overlay)
+                    {
+                        item.AttachmentType = AttachmentTypes[0];
+                    }
+                    else item.AttachmentType = AttachmentTypes[1];
                     LinkedFileStatus link_status = link.GetLinkedFileStatus();
                     if (link_status == LinkedFileStatus.Loaded)
                     {
                         item.Status = "Загружено";
                         item.StatusColor = Brushes.Green;
                     }
-                    else
+                    else if (link_status == LinkedFileStatus.Unloaded)
                     {
                         item.Status = "Не загружено";
+                        item.StatusColor = Brushes.Orange;
+                    }
+                    else
+                    {
+                        item.Status = "Не найдено";
                         item.StatusColor = Brushes.Red;
                     }
                     LinkItems.Add(item);
                 }
-            }
-            string dirName = NameSearchField.Text;
-            try
-            {
-                paths = Directory.GetFiles(dirName, "*.rvt", SearchOption.AllDirectories);
-                if (paths.Length != 0)
-                {
-                    foreach (string path in paths)
-                    {
-                        string filename = new DirectoryInfo(path).Name;
-                        FileItem item = new FileItem
-                        {
-                            FileName = filename,
-                            Path = path,
-                        };
-                        FileItems.Add(item);
-                    }
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void ExecuteAction(object parameter)
-        {
-            if (parameter is LinkItem link)
-            {
-                // Логика обработки действия
-                MessageBox.Show($"Выполнено действие: {link.ActionText} для {link.LinkName}");
             }
         }
 
@@ -237,6 +217,28 @@ namespace LinkManager
         }
 
         /// <summary>
+        /// Когда нажата кнопка "Обновить из"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadFromButton_Click(object sender, RoutedEventArgs e)
+        {
+            string dirName = NameSearchField.Text;
+            WorksetConfiguration config = new WorksetConfiguration();
+            List<RevitLinkType> links = new List<RevitLinkType>();
+            foreach (LinkItem item in LinkItems)
+            {
+                if (item.IsSelected)
+                {
+                    RevitLinkType linkType = item.LinkType;
+                    links.Add(linkType);
+                }
+            }
+            Link_Methods.LoadFrom(links, dirName, config);
+            UpdateData();
+        }
+
+        /// <summary>
         /// Когда нажата кнопка "Обновить"
         /// </summary>
         /// <param name="sender"></param>
@@ -296,6 +298,25 @@ namespace LinkManager
             //}
             //Link_Methods.Delete(doc, links);
             UpdateData();
+        }
+
+        /// <summary>
+        /// Когда изменён тип связи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+
+        private void ComboBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            List<RevitLinkType> links = new List<RevitLinkType>();
+            foreach (LinkItem item in LinkItems)
+            {
+                if (item.AttachmentType.Value != item.LinkType.AttachmentType)
+                {
+                    Link_Methods.ChangeType(doc, item.LinkType, item.AttachmentType.Value);
+                }
+            }
         }
 
         /// <summary>
@@ -447,18 +468,16 @@ public class FileItem : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
-
 public class LinkItem : INotifyPropertyChanged
 {
     private bool _isSelected;
-
     public string LinkName { get; set; }
     public string Status { get; set; }
     public Brush StatusColor { get; set; }
     public string ActionText { get; set; }
     public Brush ActionColor { get; set; }
     public RevitLinkType LinkType { get; set; }
-
+    public AttachmentTypeItem AttachmentType { get; set; }
     public bool IsSelected
     {
         get => _isSelected;
@@ -479,6 +498,12 @@ public class LinkItem : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
+public class AttachmentTypeItem
+{
+    public string Text { get; set; }
+    public AttachmentType Value { get; set; }
+}
+
 
 // Реализация RelayCommand
 public class RelayCommand : ICommand

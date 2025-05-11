@@ -58,16 +58,12 @@
 
         <!-- Шаблон для кнопок действий -->
         <!--нужен функционал для комбобокса: обновить, выгрузить, удалить-->
-        <DataTemplate x:Key="ActionTemplate">
-            <ComboBox ItemsSource="{Binding Options}" SelectedItem="{Binding SelectedOption}" DisplayMemberPath="Text"
-            Style="{StaticResource {x:Type ComboBox}}" Padding="6 2" MinWidth="80">
-                <!-- Стиль для элементов выпадающего списка -->
-                <ComboBox.ItemContainerStyle>
-                    <Style TargetType="ComboBoxItem">
-                        <Setter Property="Background" Value="{Binding ActionColor}"/>
-                        <Setter Property="Padding" Value="10 4"/>
-                    </Style>
-                </ComboBox.ItemContainerStyle>
+        <DataTemplate x:Key="LinkTypeTemplate">
+            <ComboBox ItemsSource="{Binding DataContext.AttachmentTypes, RelativeSource={RelativeSource AncestorType=ListView}}"
+                SelectedItem="{Binding AttachmentType, Mode=TwoWay}"
+                DisplayMemberPath="Text"
+                SelectedValuePath="Value"
+                SelectionChanged="ComboBox_SelectionChanged">
             </ComboBox>
         </DataTemplate>
     </Window.Resources>
@@ -188,8 +184,8 @@
                                 DisplayMemberBinding="{Binding LinkName}"/>
                             <GridViewColumn Header="Статус" Width="130" 
                                 CellTemplate="{StaticResource StatusTemplate}"/>
-                            <GridViewColumn Header="Действие" Width="130" 
-                                CellTemplate="{StaticResource ActionTemplate}"/>
+                            <GridViewColumn Header="Тип связи" Width="130" 
+                                CellTemplate="{StaticResource LinkTypeTemplate}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -207,7 +203,16 @@
                 <!-- Поле слева -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Width="490">
                     <!--Кнопка "Добавить связи"-->
-                    <Button x:Name="CreateLinkButton" Width="200" FontSize="24" Content="Добавить&#xA;   связи" Margin="0 0 10 0" BorderBrush="Black" Click="CreateLinkButton_Click">
+                    <Button x:Name="CreateLinkButton" Width="200" Height="40" FontSize="24" Content="Добавить" Margin="0 0 0 60" BorderBrush="Black" Click="CreateLinkButton_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFA5A5A5"/>
+                                <GradientStop Color="#FF3E3E3E" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <!--Кнопка "Обновить из"-->
+                    <Button x:Name="LoadFromButton" Width="200" Height="40" FontSize="24" Content="Обновить из" Margin="-200 0 0 -60" BorderBrush="Black" Click="LoadFromButton_Click">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFA5A5A5"/>
@@ -218,16 +223,16 @@
                     <!--Тип размещения-->
                     <GroupBox Header="Тип размещения" Margin="10 0 20 0" Width="250">
                         <StackPanel>
-                            <RadioButton x:Name="SharedCoordinatesRadio" Content="По общим координатам" Margin="0 2"/>
+                            <RadioButton x:Name="SharedCoordinatesRadio" Content="По общим координатам" Margin="0 2" IsChecked="True"/>
                             <RadioButton x:Name="OriginRadio" Content="Совмещение внутренних начал" Margin="0 2"/>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
 
                 <!-- Поле справа -->
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" Width="450">
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left" Width="500">
                     <!--Кнопка "Обновить"-->
-                    <Button x:Name="ReloadButton" Width="200" FontSize="24" Content="Обновить" Style="{StaticResource {x:Type Button}}" Margin="15,-80,0,0" Click="ReloadButton_Click" Height="40">
+                    <Button x:Name="ReloadButton" Width="200" FontSize="24" Content="Обновить" Style="{StaticResource {x:Type Button}}" Margin="15 -80 0 0" Click="ReloadButton_Click" Height="40">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF2AA4D0"/>
@@ -236,7 +241,7 @@
                         </Button.Background>
                     </Button>
                     <!--Кнопка "Выгрузить"-->
-                    <Button x:Name="UnloadButton" Width="200" FontSize="24" Content="Выгрузить" Style="{StaticResource {x:Type Button}}" Margin="-200,0,0,0" Click="UnloadButton_Click" Height="40">
+                    <Button x:Name="UnloadButton" Width="200" FontSize="24" Content="Выгрузить" Style="{StaticResource {x:Type Button}}" Margin="-200 0 0 0" Click="UnloadButton_Click" Height="40">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF2AA4D0"/>
@@ -245,7 +250,7 @@
                         </Button.Background>
                     </Button>
                     <!--Кнопка "Удалить"-->
-                    <Button x:Name="DeleteButton" Width="200" FontSize="24" Content="Удалить" Style="{StaticResource {x:Type Button}}" Margin="-200,80,0,0" Click="DeleteButton_Click" Height="40">
+                    <Button x:Name="DeleteButton" Width="200" FontSize="24" Content="Удалить" Style="{StaticResource {x:Type Button}}" Margin="-200 80 0 0" Click="DeleteButton_Click" Height="40">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FF2AA4D0"/>
@@ -254,11 +259,13 @@
                         </Button.Background>
                     </Button>
                     <!--Параметры-->
-                    <StackPanel Margin="20 15 0 0" Width="200">
-                        <CheckBox x:Name="SavePositionsCheckbox" Content="Сохранить положения" Margin="0 5" Checked="SavePositionsCheckbox_Checked"/>
-                        <CheckBox x:Name="TransferCoordinatesRadio" Content="Передать координаты" Margin="0 5" Checked="TransferCoordinatesRadio_Checked"/>
-                        <CheckBox x:Name="GetCoordinatesRadio" Content="Получить координаты" Margin="0 5" Checked="GetCoordinatesRadio_Checked"/>
-                    </StackPanel>
+                    <GroupBox Header="Параметры" Margin="10 0 20 0" Width="200">
+                        <StackPanel>
+                            <CheckBox x:Name="SavePositionsCheckbox" Content="Сохранить положения" Margin="0 5" Checked="SavePositionsCheckbox_Checked"/>
+                            <CheckBox x:Name="TransferCoordinatesRadio" Content="Передать координаты" Margin="0 5" Checked="TransferCoordinatesRadio_Checked"/>
+                            <CheckBox x:Name="GetCoordinatesRadio" Content="Получить координаты" Margin="0 5" Checked="GetCoordinatesRadio_Checked"/>
+                        </StackPanel>
+                    </GroupBox>
                 </StackPanel>
             </Grid>
         </Border>

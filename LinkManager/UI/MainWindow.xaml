@@ -159,10 +159,6 @@
               ItemsSource="{Binding LinkItems}" av:ItemsSource="{av:SampleData ItemCount=5}">
                     <ListView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Элементы">
-                                <MenuItem Header="Отметить" Click="ListView_CheckSelected"/>
-                                <MenuItem Header="Снять отметки" Click="ListView_UncheckSelected"/>
-                            </MenuItem>
                             <MenuItem Header="Тип связи">
                                 <MenuItem Header="Наложение" Click="ListView_OverlaySelected"/>
                                 <MenuItem Header="Прикрепление" Click="ListView_AttachmentSelected"/>

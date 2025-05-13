@@ -74,6 +74,7 @@ namespace LinkManager
                 new AttachmentTypeItem { Text = "Наложение", Value = AttachmentType.Overlay },
                 new AttachmentTypeItem { Text = "Прикрепление", Value = AttachmentType.Attachment }
             };
+
             // Команда для чекбокса "Все"
             ToggleAllFilesCommand = new RelayCommand(param =>
             {
@@ -309,7 +310,6 @@ namespace LinkManager
 
         private void ComboBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            List<RevitLinkType> links = new List<RevitLinkType>();
             foreach (LinkItem item in LinkItems)
             {
                 if (item.AttachmentType.Value != item.LinkType.AttachmentType)

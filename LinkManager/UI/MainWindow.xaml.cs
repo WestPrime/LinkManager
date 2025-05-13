@@ -199,7 +199,7 @@ namespace LinkManager
             ImportPlacement placement = ImportPlacement.Shared;
             if (SharedCoordinatesRadio.IsChecked.Value)
             {
-                placement = ImportPlacement.Shared; 
+                placement = ImportPlacement.Shared;
             }
             if (OriginRadio.IsChecked.Value)
             {
@@ -438,6 +438,11 @@ namespace LinkManager
                 }
             }
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
@@ -498,6 +503,7 @@ public class LinkItem : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
+
 public class AttachmentTypeItem
 {
     public string Text { get; set; }

@@ -74,6 +74,7 @@ namespace LinkManager
                 new AttachmentTypeItem { Text = "Наложение", Value = AttachmentType.Overlay },
                 new AttachmentTypeItem { Text = "Прикрепление", Value = AttachmentType.Attachment }
             };
+
             // Команда для чекбокса "Все"
             ToggleAllFilesCommand = new RelayCommand(param =>
             {
@@ -199,7 +200,7 @@ namespace LinkManager
             ImportPlacement placement = ImportPlacement.Shared;
             if (SharedCoordinatesRadio.IsChecked.Value)
             {
-                placement = ImportPlacement.Shared; 
+                placement = ImportPlacement.Shared;
             }
             if (OriginRadio.IsChecked.Value)
             {
@@ -309,7 +310,6 @@ namespace LinkManager
 
         private void ComboBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            List<RevitLinkType> links = new List<RevitLinkType>();
             foreach (LinkItem item in LinkItems)
             {
                 if (item.AttachmentType.Value != item.LinkType.AttachmentType)
@@ -438,6 +438,11 @@ namespace LinkManager
                 }
             }
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
@@ -498,6 +503,7 @@ public class LinkItem : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
+
 public class AttachmentTypeItem
 {
     public string Text { get; set; }

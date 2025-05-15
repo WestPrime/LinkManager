@@ -159,6 +159,10 @@
               ItemsSource="{Binding LinkItems}" av:ItemsSource="{av:SampleData ItemCount=5}">
                     <ListView.ContextMenu>
                         <ContextMenu>
+                            <MenuItem Header="Отметить">
+                                <MenuItem Header="Отметить" Click="ListView_CheckSelected"/>
+                                <MenuItem Header="Очистить" Click="ListView_UncheckSelected"/>
+                            </MenuItem>
                             <MenuItem Header="Тип связи">
                                 <MenuItem Header="Наложение" Click="ListView_OverlaySelected"/>
                                 <MenuItem Header="Прикрепление" Click="ListView_AttachmentSelected"/>
@@ -170,7 +174,7 @@
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         </Style>
                     </ListView.ItemContainerStyle>
-                    <ListView.View>
+                    <ListView.View> 
                         <GridView>
                             <GridViewColumn Header="" Width="50">
                                 <GridViewColumn.HeaderTemplate>

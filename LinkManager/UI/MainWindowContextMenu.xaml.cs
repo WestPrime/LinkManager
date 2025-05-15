@@ -6,11 +6,19 @@ namespace LinkManager
 {
     partial class MainWindow
     {
-        public void ListView_InvertSelected(object sender, RoutedEventArgs e)
+        public void ListView_CheckSelected(object sender, RoutedEventArgs e)
         {
             foreach (LinkItem item in LinksListView.SelectedItems)
             {
-                item.IsSelected = !item.IsSelected; // заменить на тру после тестирования
+                item.IsSelected = true;
+            }
+        }
+
+        public void ListView_UncheckSelected(object sender, RoutedEventArgs e)
+        {
+            foreach (LinkItem item in LinksListView.SelectedItems)
+            {
+                item.IsSelected = false;
             }
         }
 
@@ -18,7 +26,7 @@ namespace LinkManager
         {
             foreach (LinkItem item in LinksListView.SelectedItems)
             {
-                
+                item.AttachmentType = AttachmentTypes[0];
             }
         }
 
@@ -26,7 +34,7 @@ namespace LinkManager
         {
             foreach (LinkItem item in LinksListView.SelectedItems)
             {
-                
+                item.AttachmentType = AttachmentTypes[1];
             }
         }
     }

@@ -80,7 +80,11 @@ namespace LinkManager
         private void UpdateData() // Обновление данных
         {
             LinkItems.Clear();
-            LinkTypes = Link_Methods.GetLinks(doc);
+            try
+            {
+                LinkTypes = Link_Methods.GetLinks(doc);
+            }
+            catch { };
             if (LinkTypes.Count != 0)
             {
                 foreach (RevitLinkType link in LinkTypes)
@@ -274,16 +278,16 @@ namespace LinkManager
         /// 
         private void DeleteButton_Click(object sender, RoutedEventArgs e) // ПОКА НЕ РАБОТАЕТ!!!
         {
-            //List<RevitLinkType> links = new List<RevitLinkType>();
-            //foreach (LinkItem item in LinkItems)
-            //{
-            //    if (item.IsSelected == true)
-            //    {
-            //        RevitLinkType linkType = item.LinkType;
-            //        links.Add(linkType);
-            //    }
-            //}
-            //Link_Methods.Delete(doc, links);
+            List<RevitLinkType> links = new List<RevitLinkType>();
+            foreach (LinkItem item in LinkItems)
+            {
+                if (item.IsSelected == true)
+                {
+                    RevitLinkType linkType = item.LinkType;
+                    links.Add(linkType);
+                }
+            }
+            Link_Methods.Delete(doc, links);
             UpdateData();
         }
 

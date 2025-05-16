@@ -273,9 +273,7 @@
                     <!--Параметры-->
                     <GroupBox Header="Параметры" Margin="10 0 20 0" Width="200">
                         <StackPanel>
-                            <CheckBox x:Name="SavePositionsCheckbox" Content="Сохранить положения" Margin="0 5" Checked="SavePositionsCheckbox_Checked"/>
-                            <CheckBox x:Name="TransferCoordinatesRadio" Content="Передать координаты" Margin="0 5" Checked="TransferCoordinatesRadio_Checked"/>
-                            <CheckBox x:Name="GetCoordinatesRadio" Content="Получить координаты" Margin="0 5" Checked="GetCoordinatesRadio_Checked"/>
+                            <CheckBox x:Name="SavePositionsCheckbox" Content="Сохранить положения" Margin="0 5"/>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>

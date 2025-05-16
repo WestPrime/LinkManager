@@ -83,7 +83,7 @@ namespace LinkManager
         }
         public static void SavePositions (List<RevitLinkType> links) // Сохранить положения
         {
-            foreach(var link in links)
+            foreach (var link in links)
             {
                 link.SavePositions(null);
             }

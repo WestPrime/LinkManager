@@ -239,6 +239,10 @@ namespace LinkManager
                 }
             }
             Link_Methods.Reload(links);
+            if (SavePositionsCheckbox.IsChecked == true)
+            {
+                Link_Methods.SavePositions(links);
+            }
             UpdateData();
         }
 
@@ -283,52 +287,6 @@ namespace LinkManager
             UpdateData();
         }
 
-        /// <summary>
-        /// Когда изменён тип связи
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// 
-        //private void ComboBox_SelectionChanged(object sender, RoutedEventArgs e)
-        //{
-        //    foreach (LinkItem item in LinkItems)
-        //    {
-        //        if (item.AttachmentType.Value != item.LinkType.AttachmentType)
-        //        {
-        //            Link_Methods.ChangeType(doc, item.LinkType, item.AttachmentType.Value);
-        //        }
-        //    }
-        //}
-
-        /// <summary>
-        /// Когда отмечается чекбокс "Сохранить положения"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SavePositionsCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Когда отмечается чекбокс "Передать координаты"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TransferCoordinatesRadio_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Когда отмечается чекбокс "Получить координаты"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GetCoordinatesRadio_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void UpdateFilesSelection(bool isSelected)
         {
             foreach (var item in FileItems)

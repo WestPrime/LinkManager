@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -87,21 +88,41 @@ namespace LinkManager
                 link.SavePositions(null);
             }
         }
-        public static void PublishCoordinates (Document doc, List<RevitLinkType> links) // Передать координаты в связанную модель
+        public static void PublishCoordinates (Document doc, RevitLinkType link) // Передать координаты в связанную модель
         {
-            foreach(var link in links)
+            RevitLinkInstance Link = null;
+            List<RevitLinkInstance> revitLinks = new FilteredElementCollector(doc).OfClass(typeof(RevitLinkInstance)).Cast<RevitLinkInstance>().ToList();
+            foreach (RevitLinkInstance revitLink in revitLinks)
             {
-                ProjectLocation projectLocation = link.Document.ActiveProjectLocation;
-                LinkElementId locationId = new LinkElementId(link.Id, projectLocation.Id);
+                if (revitLink.GetTypeId() == link.Id)
+                {
+                    Link = revitLink;
+                }
+            }
+            ProjectLocation projectLocation = Link.Document.ActiveProjectLocation;
+            LinkElementId locationId = new LinkElementId(Link.Id, projectLocation.Id);
+            Transaction t = new Transaction(doc, "Передать координаты");
+            t.Start();
+            try
+            {
                 doc.PublishCoordinates(locationId);
             }
+            catch { }
+            t.Commit();
         }
-        public static void AcquierCoordinates(Document doc, List<RevitLinkType> links) // Получить координаты из связанной модели
+        public static void AcquierCoordinates(Document doc, RevitLinkType link) // Получить координаты из связанной модели
         {
-            foreach (var link in links)
+            Transaction t = new Transaction(doc, "Получить координаты");
+            t.Start();
+            try
             {
                 doc.AcquireCoordinates(link.Id);
             }
+            catch (Autodesk.Revit.Exceptions.InvalidOperationException e)
+            {
+                MessageBox.Show("Координаты не были получены. Выбранная связь имеет те же координаты, что и главная модель", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            t.Commit();
         }
     }
 }

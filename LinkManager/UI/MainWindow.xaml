@@ -62,9 +62,7 @@
             <ComboBox ItemsSource="{Binding DataContext.AttachmentTypes, RelativeSource={RelativeSource AncestorType=ListView}}"
                 SelectedItem="{Binding AttachmentType, Mode=TwoWay}"
                 DisplayMemberPath="Text"
-                SelectedValuePath="Value"
-                SelectionChanged="ComboBox_SelectionChanged">
-            </ComboBox>
+                SelectedValuePath="Value"/>
         </DataTemplate>
     </Window.Resources>
 
@@ -159,13 +157,15 @@
               ItemsSource="{Binding LinkItems}" av:ItemsSource="{av:SampleData ItemCount=5}">
                     <ListView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Отметить">
-                                <MenuItem Header="Отметить" Click="ListView_CheckSelected"/>
-                                <MenuItem Header="Очистить" Click="ListView_UncheckSelected"/>
-                            </MenuItem>
-                            <MenuItem Header="Тип связи">
+                            <MenuItem Header="Выбрать" Click="ListView_CheckSelected"/>
+                            <MenuItem Header="Снять выбор" Click="ListView_UncheckSelected"/>
+                            <MenuItem Header="Изменить тип связи">
                                 <MenuItem Header="Наложение" Click="ListView_OverlaySelected"/>
                                 <MenuItem Header="Прикрепление" Click="ListView_AttachmentSelected"/>
+                            </MenuItem>
+                            <MenuItem Header="Координаты">
+                                <MenuItem Header="Получить" Click="ListView_AcquierCoordinates"/>
+                                <MenuItem Header="Передать" Click="ListView_PublishCoordinates"/>
                             </MenuItem>
                         </ContextMenu>
                     </ListView.ContextMenu>

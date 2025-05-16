@@ -20,8 +20,6 @@ namespace LinkManager
         public ObservableCollection<FileItem> FileItems { get; set; }
         public ObservableCollection<LinkItem> LinkItems { get; set; }
         public ObservableCollection<AttachmentTypeItem> AttachmentTypes { get; set; }
-
-        // Код для чекбоксов
         private bool _isAllFilesSelected;
         public bool? IsAllFilesSelected
         {
@@ -36,7 +34,6 @@ namespace LinkManager
                 }
             }
         }
-
         private bool _isAllLinksSelected;
         public bool? IsAllLinksSelected
         {
@@ -51,10 +48,8 @@ namespace LinkManager
                 }
             }
         }
-
         public ICommand ToggleAllFilesCommand { get; }
         public ICommand ToggleAllLinksCommand { get; }
-
         public ICommand ActionCommand { get; }
         public Document doc;
         public List<RevitLinkType> LinkTypes;
@@ -65,8 +60,6 @@ namespace LinkManager
             LinkTypes = Link_Methods.GetLinks(doc);
             InitializeComponent();
             DataContext = this;
-
-            // Инициализация коллекций
             FileItems = new ObservableCollection<FileItem>();
             LinkItems = new ObservableCollection<LinkItem>();
             AttachmentTypes = new ObservableCollection<AttachmentTypeItem>
@@ -74,8 +67,6 @@ namespace LinkManager
                 new AttachmentTypeItem { Text = "Наложение", Value = AttachmentType.Overlay },
                 new AttachmentTypeItem { Text = "Прикрепление", Value = AttachmentType.Attachment }
             };
-
-            // Команда для чекбокса "Все"
             ToggleAllFilesCommand = new RelayCommand(param =>
             {
                 IsAllFilesSelected = !IsAllFilesSelected;
@@ -84,8 +75,6 @@ namespace LinkManager
             {
                 IsAllLinksSelected = !IsAllLinksSelected;
             });
-
-            // Заполнение текущими данными
             UpdateData();
         }
         private void UpdateData() // Обновление данных
@@ -103,10 +92,7 @@ namespace LinkManager
                         ActionColor = Brushes.DodgerBlue,
                         LinkType = link
                     };
-                    if (link.AttachmentType == AttachmentType.Overlay)
-                    {
-                        item.AttachmentType = AttachmentTypes[0];
-                    }
+                    if (link.AttachmentType == AttachmentType.Overlay) item.AttachmentType = AttachmentTypes[0];
                     else item.AttachmentType = AttachmentTypes[1];
                     LinkedFileStatus link_status = link.GetLinkedFileStatus();
                     if (link_status == LinkedFileStatus.Loaded)
@@ -146,6 +132,7 @@ namespace LinkManager
                 }
             }
         }
+
         /// <summary>
         /// Когда нажата кнопка "Поиск"
         /// </summary>
@@ -154,7 +141,6 @@ namespace LinkManager
         private void UpdateFileName_Click(object sender, RoutedEventArgs e)
         {
             string directoryPath = NameSearchField.Text;
-
             if (string.IsNullOrWhiteSpace(directoryPath) || !Directory.Exists(directoryPath))
             {
                 MessageBox.Show("Указан некорректный путь. Пожалуйста, выберите существующую директорию.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -175,8 +161,6 @@ namespace LinkManager
                         Path = filePath
                     });
                 }
-
-                // Если файлы не найдены, показываем сообщение
                 if (FileItems.Count == 0)
                 {
                     MessageBox.Show("Файлы формата .rvt не найдены в указанной директории.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -184,7 +168,6 @@ namespace LinkManager
             }
             catch (Exception ex)
             {
-                // Обработка ошибок при поиске файлов
                 MessageBox.Show($"Произошла ошибка при поиске файлов: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -285,7 +268,6 @@ namespace LinkManager
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// 
-
         private void DeleteButton_Click(object sender, RoutedEventArgs e) // ПОКА НЕ РАБОТАЕТ!!!
         {
             //List<RevitLinkType> links = new List<RevitLinkType>();
@@ -307,17 +289,16 @@ namespace LinkManager
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// 
-
-        private void ComboBox_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            foreach (LinkItem item in LinkItems)
-            {
-                if (item.AttachmentType.Value != item.LinkType.AttachmentType)
-                {
-                    Link_Methods.ChangeType(doc, item.LinkType, item.AttachmentType.Value);
-                }
-            }
-        }
+        //private void ComboBox_SelectionChanged(object sender, RoutedEventArgs e)
+        //{
+        //    foreach (LinkItem item in LinkItems)
+        //    {
+        //        if (item.AttachmentType.Value != item.LinkType.AttachmentType)
+        //        {
+        //            Link_Methods.ChangeType(doc, item.LinkType, item.AttachmentType.Value);
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Когда отмечается чекбокс "Сохранить положения"
@@ -348,7 +329,6 @@ namespace LinkManager
         {
 
         }
-
         private void UpdateFilesSelection(bool isSelected)
         {
             foreach (var item in FileItems)
@@ -356,7 +336,6 @@ namespace LinkManager
                 item.IsSelected = isSelected;
             }
         }
-
         private void UpdateLinksSelection(bool isSelected)
         {
             if (LinkItems == null)
@@ -368,7 +347,6 @@ namespace LinkManager
                 item.IsSelected = isSelected;
             }
         }
-
         private void FileItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(FileItem.IsSelected))
@@ -377,7 +355,6 @@ namespace LinkManager
                 IsAllFilesSelected = allSelected ? true : false;
             }
         }
-
         private void LinkItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(LinkItem.IsSelected))
@@ -386,14 +363,11 @@ namespace LinkManager
                 IsAllLinksSelected = allSelected ? true : false;
             }
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is System.Windows.Controls.ListViewItem listViewItem && listViewItem.DataContext is INotifyPropertyChanged item)
@@ -408,7 +382,6 @@ namespace LinkManager
                 }
             }
         }
-
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (sender is System.Windows.Controls.CheckBox checkBox && checkBox.DataContext is INotifyPropertyChanged item)
@@ -423,7 +396,6 @@ namespace LinkManager
                 }
             }
         }
-
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             if (sender is System.Windows.Controls.CheckBox checkBox && checkBox.DataContext is INotifyPropertyChanged item)
@@ -438,21 +410,13 @@ namespace LinkManager
                 }
             }
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
-
 }
-
 public class FileItem : INotifyPropertyChanged
 {
     private bool _isSelected;
     public string FileName { get; set; }
     public string Path { get; set; }
-
     public bool IsSelected
     {
         get => _isSelected;
@@ -465,9 +429,7 @@ public class FileItem : INotifyPropertyChanged
             }
         }
     }
-
     public event PropertyChangedEventHandler PropertyChanged;
-
     protected void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -495,23 +457,17 @@ public class LinkItem : INotifyPropertyChanged
             }
         }
     }
-
     public event PropertyChangedEventHandler PropertyChanged;
-
     protected void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
-
 public class AttachmentTypeItem
 {
     public string Text { get; set; }
     public AttachmentType Value { get; set; }
 }
-
-
-// Реализация RelayCommand
 public class RelayCommand : ICommand
 {
     private readonly Action<object> _execute;

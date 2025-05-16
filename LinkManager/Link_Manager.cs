@@ -7,7 +7,6 @@ using System.Windows.Media.Imaging;
 
 namespace LinkManager
 {
-
     [DisplayName("Revit Link Manager")]
     [Description("C# Programming case")]
     public class Link_Manager : IExternalApplication
@@ -21,25 +20,19 @@ namespace LinkManager
         {
             using (var memory = new MemoryStream())
             {
-                // Сохраняем Bitmap в MemoryStream в формате PNG (можно выбрать другой формат)
                 bitmap.Save(memory, ImageFormat.Png);
-                memory.Position = 0; // Сбрасываем позицию потока на начало
-
+                memory.Position = 0;
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad; // Загружаем изображение сразу
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 bitmapImage.StreamSource = memory;
                 bitmapImage.EndInit();
-                bitmapImage.Freeze(); // Опционально: делает изображение неизменяемым (полезно для многопоточности)
-
+                bitmapImage.Freeze();
                 return bitmapImage;
             }
         }
-
-        public static string assemblyLocation   = Assembly.GetExecutingAssembly().Location, 
-                             tabName            = "Менеджер связей", 
-                             iconsDirectoryPath = Path.GetDirectoryName(assemblyLocation) + @"\LinkManagerData\";
-
+        public static string assemblyLocation = Assembly.GetExecutingAssembly().Location,
+                             tabName = "Менеджер связей";
         public Result OnStartup(UIControlledApplication application)
         {
             BitmapImage blueCircle =   BitmapToBitmapImage(Properties.Resources.blue);

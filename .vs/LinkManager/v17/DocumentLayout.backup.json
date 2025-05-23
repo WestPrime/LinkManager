@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\linkmanager\\ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\linkmanager\\link_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\link_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|c:\\users\\andrey\\documents\\github\\linkmanager\\linkmanager\\link_methods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\linkmanager\\link_methods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\link_methods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -19,8 +19,8 @@
       "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\ui\\mainwindowcontextmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\linkmanager\\link_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\link_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|c:\\users\\andrey\\documents\\github\\linkmanager\\linkmanager\\ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|solutionrelative:linkmanager\\ui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4D1A42D2-2C67-478A-8576-1E42AF62C400}|LinkManager\\LinkManager.csproj|C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\linkmanager\\link_testui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,22 +50,22 @@
               "Title": "Link_Methods.cs",
               "DocumentMoniker": "C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\LinkManager\\Link_Methods.cs",
               "RelativeDocumentMoniker": "LinkManager\\Link_Methods.cs",
-              "ToolTip": "C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\LinkManager\\Link_Methods.cs",
-              "RelativeToolTip": "LinkManager\\Link_Methods.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAkwFQAAAAJAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\LinkManager\\Link_Methods.cs*",
+              "RelativeToolTip": "LinkManager\\Link_Methods.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T15:05:31.168Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Link_Manager.cs",
               "DocumentMoniker": "C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\LinkManager\\Link_Manager.cs",
               "RelativeDocumentMoniker": "LinkManager\\Link_Manager.cs",
               "ToolTip": "C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\LinkManager\\Link_Manager.cs",
               "RelativeToolTip": "LinkManager\\Link_Manager.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwBwAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCUAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T15:04:23.613Z",
               "EditorCaption": ""
@@ -97,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Andrey\\Documents\\GitHub\\LinkManager\\LinkManager\\UI\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "LinkManager\\UI\\MainWindow.xaml.cs",

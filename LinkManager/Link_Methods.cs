@@ -1,12 +1,8 @@
 ﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Shapes;
 
 namespace LinkManager
 {
@@ -15,7 +11,7 @@ namespace LinkManager
         public static List<RevitLinkType> GetLinks(Document doc) // Получить все ссылки в проекте
         {
             FilteredElementCollector collector = new FilteredElementCollector(doc);
-            List<RevitLinkType> links = collector.OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
+            List<RevitLinkType> links = collector.OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().Where(it => it.IsNestedLink == false).ToList();
             return links;
         }
         public static void ChangeType(Document doc, RevitLinkType link, AttachmentType type) // Изменить тип связи
@@ -77,7 +73,11 @@ namespace LinkManager
             {
                 Transaction t = new Transaction(doc, "Удалить связь");
                 t.Start();
-                doc.Delete(link.Id);
+                try
+                {
+                    doc.Delete(link.Id);
+                }
+                catch { }
                 t.Commit();
             }
         }

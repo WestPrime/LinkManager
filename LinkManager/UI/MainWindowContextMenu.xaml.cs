@@ -6,21 +6,24 @@ namespace LinkManager
 {
     partial class MainWindow
     {
-        public void ListView_CheckSelected(object sender, RoutedEventArgs e)
+        #region Правая часть
+        public void RightListView_CheckSelected(object sender, RoutedEventArgs e)
         {
             foreach (LinkItem item in LinksListView.SelectedItems)
             {
                 item.IsSelected = true;
             }
         }
-        public void ListView_UncheckSelected(object sender, RoutedEventArgs e)
+
+        public void RightListView_UncheckSelected(object sender, RoutedEventArgs e)
         {
             foreach (LinkItem item in LinksListView.SelectedItems)
             {
                 item.IsSelected = false;
             }
         }
-        public void ListView_OverlaySelected(object sender, RoutedEventArgs e)
+
+        public void RightListView_OverlaySelected(object sender, RoutedEventArgs e)
         {
             foreach (LinkItem item in LinksListView.SelectedItems)
             {
@@ -32,7 +35,8 @@ namespace LinkManager
             }
             UpdateData();
         }
-        public void ListView_AttachmentSelected(object sender, RoutedEventArgs e)
+
+        public void RightListView_AttachmentSelected(object sender, RoutedEventArgs e)
         {
             foreach (LinkItem item in LinksListView.SelectedItems)
             {
@@ -44,7 +48,8 @@ namespace LinkManager
             }
             UpdateData();
         }
-        public void ListView_PublishCoordinates(object sender, RoutedEventArgs e)
+
+        public void RightListView_PublishCoordinates(object sender, RoutedEventArgs e)
         {
             if (LinksListView.SelectedItems.Count >= 1)
             {
@@ -58,7 +63,8 @@ namespace LinkManager
                 MessageBox.Show("Выделите связи, в которые необходимо опубликовать общую систему координат", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-        public void ListView_AcquierCoordinates(object sender, RoutedEventArgs e)
+
+        public void RightListView_AcquierCoordinates(object sender, RoutedEventArgs e)
         {
             if (LinksListView.SelectedItems.Count == 1)
             {
@@ -70,5 +76,23 @@ namespace LinkManager
                 MessageBox.Show("Выделите одну связь, из которой нужно получить общую систему координат", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+        #endregion
+        #region Левая часть
+        public void LeftListView_CheckSelected(object sender, RoutedEventArgs e)
+        {
+            foreach (FileItem item in FilesListView.SelectedItems)
+            {
+                item.IsSelected = true;
+            }
+        }
+
+        public void LeftListView_UncheckSelected(object sender, RoutedEventArgs e)
+        {
+            foreach (FileItem item in FilesListView.SelectedItems)
+            {
+                item.IsSelected = false;
+            }
+        }
+        #endregion
     }
 }

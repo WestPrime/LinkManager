@@ -1,6 +1,6 @@
 ﻿<Window
         x:Name="mainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:LinkManager"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="LinkManager.MainWindow"
@@ -119,6 +119,13 @@
             <GroupBox Header="Добавление связей" Grid.Column="0" Padding="5">
                 <ListView x:Name="FilesListView" Style="{StaticResource ModernListView}"
                           ItemsSource="{Binding FileItems}" av:ItemsSource="{av:SampleData ItemCount=5}">
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Выбрать" Click="LeftListView_CheckSelected"/>
+                            <MenuItem Header="Снять выбор" Click="LeftListView_UncheckSelected"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -157,15 +164,15 @@
               ItemsSource="{Binding LinkItems}" av:ItemsSource="{av:SampleData ItemCount=5}">
                     <ListView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Выбрать" Click="ListView_CheckSelected"/>
-                            <MenuItem Header="Снять выбор" Click="ListView_UncheckSelected"/>
+                            <MenuItem Header="Выбрать" Click="RightListView_CheckSelected"/>
+                            <MenuItem Header="Снять выбор" Click="RightListView_UncheckSelected"/>
                             <MenuItem Header="Изменить тип связи">
-                                <MenuItem Header="Наложение" Click="ListView_OverlaySelected"/>
-                                <MenuItem Header="Прикрепление" Click="ListView_AttachmentSelected"/>
+                                <MenuItem Header="Наложение" Click="RightListView_OverlaySelected"/>
+                                <MenuItem Header="Прикрепление" Click="RightListView_AttachmentSelected"/>
                             </MenuItem>
                             <MenuItem Header="Координаты">
-                                <MenuItem Header="Получить" Click="ListView_AcquierCoordinates"/>
-                                <MenuItem Header="Передать" Click="ListView_PublishCoordinates"/>
+                                <MenuItem Header="Получить" Click="RightListView_AcquierCoordinates"/>
+                                <MenuItem Header="Передать" Click="RightListView_PublishCoordinates"/>
                             </MenuItem>
                         </ContextMenu>
                     </ListView.ContextMenu>

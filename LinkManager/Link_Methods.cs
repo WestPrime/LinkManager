@@ -24,15 +24,12 @@ namespace LinkManager
         public static void Create(Document doc, string dirName, RevitLinkOptions options, ImportPlacement placement) // Добавить...
         {
             FilePath path = new FilePath(dirName);
-            Transaction t = new Transaction(doc, "Добавить связь");
-            t.Start();
             try
             {
                 LinkLoadResult link = RevitLinkType.Create(doc, path, options);
                 RevitLinkInstance.Create(doc, link.ElementId, placement);
             }
             catch { }
-            t.Commit();
         }
         public static void LoadFrom(List<RevitLinkType> links, string dirName, WorksetConfiguration config) // Обновить из...
         {
@@ -69,17 +66,17 @@ namespace LinkManager
         }
         public static void Delete(Document doc, List<RevitLinkType> links) // Удалить
         {
+            Transaction t = new Transaction(doc, "Удалить связь");
+            t.Start();
             foreach (RevitLinkType link in links)
             {
-                Transaction t = new Transaction(doc, "Удалить связь");
-                t.Start();
                 try
                 {
                     doc.Delete(link.Id);
                 }
                 catch { }
-                t.Commit();
             }
+            t.Commit();
         }
         public static void SavePositions (List<RevitLinkType> links) // Сохранить положения
         {

@@ -193,6 +193,8 @@ namespace LinkManager
             {
                 placement = ImportPlacement.Origin;
             }
+            Transaction t = new Transaction(doc, "Добавить связи");
+            t.Start();
             foreach (FileItem item in FileItems)
             {
                 if (item.IsSelected)
@@ -200,6 +202,7 @@ namespace LinkManager
                     string dir = item.Path;
                     Link_Methods.Create(doc, dir, options, placement);
                 }
+            t.Commit();
             }
             UpdateData();
         }

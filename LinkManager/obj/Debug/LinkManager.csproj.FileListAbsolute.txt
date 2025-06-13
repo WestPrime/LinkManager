@@ -62,3 +62,16 @@ C:\Users\Andrey\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.c
 C:\Users\Andrey\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.CoreCompileInputs.cache
 C:\Users\Andrey\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.dll
 C:\Users\Andrey\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.pdb
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\bin\Debug\LinkManager.dll
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\bin\Debug\LinkManager.pdb
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.AssemblyReference.cache
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\UI\MainWindow.g.cs
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager_MarkupCompile.cache
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager_MarkupCompile.lref
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\UI\MainWindow.baml
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.g.resources
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.Properties.Resources.resources
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.GenerateResource.cache
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.dll
+C:\Users\user\Documents\GitHub\LinkManager\LinkManager\obj\Debug\LinkManager.pdb

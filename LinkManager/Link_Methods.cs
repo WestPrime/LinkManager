@@ -32,7 +32,7 @@ namespace LinkManager
             }
             catch (Autodesk.Revit.Exceptions.ApplicationException ex)
             {
-                MessageBox.Show("Ошибка", ex.Message);
+                TaskDialog.Show("Ошибка", ex.Message);
             }
         }
         public static void LoadFrom(List<RevitLinkType> links, string dirName, WorksetConfiguration config) // Обновить из...
@@ -53,7 +53,7 @@ namespace LinkManager
                 }
                 catch (Autodesk.Revit.Exceptions.ApplicationException ex)
                 {
-                    MessageBox.Show("Ошибка", ex.Message);
+                    TaskDialog.Show("Ошибка", ex.Message);
                 }
             }
         }
@@ -67,7 +67,7 @@ namespace LinkManager
                 }
                 catch (Autodesk.Revit.Exceptions.ApplicationException ex)
                 {
-                    MessageBox.Show("Ошибка", ex.Message);
+                    TaskDialog.Show("Ошибка", ex.Message);
                 }
             }
         }
@@ -75,7 +75,14 @@ namespace LinkManager
         {
             foreach (RevitLinkType link in links)
             {
-                link.Unload(null);
+                try
+                {
+                    link.Unload(null);
+                }
+                catch (Autodesk.Revit.Exceptions.ApplicationException ex)
+                {
+                    TaskDialog.Show("Ошибка", ex.Message);
+                }
             }
         }
         public static void Delete(Document doc, List<RevitLinkType> links) // Удалить
@@ -90,7 +97,7 @@ namespace LinkManager
                 }
                 catch (Autodesk.Revit.Exceptions.ApplicationException ex)
                 {
-                    MessageBox.Show("Ошибка", ex.Message);
+                    TaskDialog.Show("Ошибка", ex.Message);
                 }
             }
             t.Commit();
@@ -105,7 +112,7 @@ namespace LinkManager
                 }
                 catch (Autodesk.Revit.Exceptions.ApplicationException ex)
                 {
-                    MessageBox.Show("Ошибка", ex.Message);
+                    TaskDialog.Show("Ошибка", ex.Message);
                 }
             }
         }
@@ -130,7 +137,7 @@ namespace LinkManager
             }
             catch (Autodesk.Revit.Exceptions.ApplicationException ex)
             {
-                MessageBox.Show("Ошибка", ex.Message);
+                TaskDialog.Show("Ошибка", ex.Message);
             }
             t.Commit();
         }

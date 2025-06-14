@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +30,10 @@ namespace LinkManager
                 LinkLoadResult link = RevitLinkType.Create(doc, path, options);
                 RevitLinkInstance.Create(doc, link.ElementId, placement);
             }
-            catch { }
+            catch (Autodesk.Revit.Exceptions.ApplicationException ex)
+            {
+                MessageBox.Show("Ошибка", ex.Message);
+            }
         }
         public static void LoadFrom(List<RevitLinkType> links, string dirName, WorksetConfiguration config) // Обновить из...
         {
@@ -47,14 +51,24 @@ namespace LinkManager
                         }
                     }
                 }
-                catch { }
+                catch (Autodesk.Revit.Exceptions.ApplicationException ex)
+                {
+                    MessageBox.Show("Ошибка", ex.Message);
+                }
             }
         }
         public static void Reload(List<RevitLinkType> links) // Обновить
         {
             foreach (RevitLinkType link in links)
             {
-                link.Reload();
+                try
+                {
+                    link.Reload();
+                }
+                catch (Autodesk.Revit.Exceptions.ApplicationException ex)
+                {
+                    MessageBox.Show("Ошибка", ex.Message);
+                }
             }
         }
         public static void Unload(List<RevitLinkType> links) // Выгрузить
@@ -74,7 +88,10 @@ namespace LinkManager
                 {
                     doc.Delete(link.Id);
                 }
-                catch { }
+                catch (Autodesk.Revit.Exceptions.ApplicationException ex)
+                {
+                    MessageBox.Show("Ошибка", ex.Message);
+                }
             }
             t.Commit();
         }
@@ -82,7 +99,14 @@ namespace LinkManager
         {
             foreach (var link in links)
             {
-                link.SavePositions(null);
+                try
+                {
+                    link.SavePositions(null);
+                }
+                catch (Autodesk.Revit.Exceptions.ApplicationException ex)
+                {
+                    MessageBox.Show("Ошибка", ex.Message);
+                }
             }
         }
         public static void PublishCoordinates (Document doc, RevitLinkType link) // Передать координаты в связанную модель
@@ -104,7 +128,10 @@ namespace LinkManager
             {
                 doc.PublishCoordinates(locationId);
             }
-            catch { }
+            catch (Autodesk.Revit.Exceptions.ApplicationException ex)
+            {
+                MessageBox.Show("Ошибка", ex.Message);
+            }
             t.Commit();
         }
         public static void AcquierCoordinates(Document doc, RevitLinkType link) // Получить координаты из связанной модели
